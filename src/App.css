@@ -110,9 +110,40 @@
     font-style: italic;
 }
 
-input::-webkit-input-placeholder{
-    color:#fff;
+input.footer-input::-webkit-input-placeholder {
+    color: #fff;
 }
-input:-moz-placeholder {
-    color:#fff;
+
+input.footer-input:-moz-placeholder {
+    color: #fff;
+}
+
+input.contact-input::-webkit-input-placeholder {
+    color: #ae73db;
+}
+
+input.contact-input:-moz-placeholder {
+    color: #ae73db;
+}
+
+/* animation */
+.animation {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.animation.active {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+.orientation-mixed {
+    text-orientation: mixed;
+}
+
+.writing-mode-vertical {
+    writing-mode: vertical-lr;
 }

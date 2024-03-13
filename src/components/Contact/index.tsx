@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import ContactCard from "../ContactCard";
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import CustomHook from "../../utils/CustomHook";
 const accessToken =
   "pk.eyJ1IjoidGhvbmd0aW5sYW5kIiwiYSI6ImNsZHh5aDk2ZDBsaGQzcG52M240dTJtaDUifQ.bsuTcIH_fvF0T000bsG2tg";
 mapboxgl.accessToken = accessToken;
 
 function ContactUs() {
+    const divs = useRef<any[]>([]);
     const mapRef = useRef<any>(null);
     const [contacts] = useState([
         { id: 1, title: 'Send Us Mail', address: 'info@AsiaPcificcpa.com' },
@@ -43,27 +45,28 @@ function ContactUs() {
             .addTo(mapRef.current)
         })
     }, [])
+    CustomHook(divs);
     return (
         <section className="w-full py-10">
             <div className="w-9/12 m-auto">
                 <div className="flex flex-col items-start">
-                    <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs">
+                    <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         contact us
                     </div>
-                    <div className="text-[#ae73db] font-medium text-3xl">Contact Us</div>
+                    <div className="text-[#ae73db] font-medium text-3xl" ref={(el: any) => el && divs.current.push(el)}>Contact Us</div>
                 </div>
-                <div className="flex justify-evenly my-6">
+                <div className="flex justify-evenly my-6" ref={(el: any) => el && divs.current.push(el)}>
                     {contacts.map(c => (
                         <ContactCard title={c.title} address={c.address} key={c.id} />
                     ))}
                 </div>
-                <div className="flex justify-between mb-6">
+                <div className="flex justify-between mb-6" ref={(el: any) => el && divs.current.push(el)}>
                     {offices.map(o => (
                         <ContactCard title={o.title} key={o.id} address={o.address} />
                     ))}
                 </div>
             </div>
-            <div className="w-8/12 m-auto h-[400px]" id="map"></div>
+            <div className="w-8/12 m-auto h-[400px]" id="map" ref={(el: any) => el && divs.current.push(el)}></div>
         </section>
     );
 }

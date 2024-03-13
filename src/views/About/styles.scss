@@ -1,0 +1,16 @@
+.steps::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: calc(100% - 145px);
+    left: 40px;
+    top: 0;
+    background: #ae73db;
+    z-index: -1;
+}
+
+.step {
+    div {
+        transform: translateY(-50%);
+    }
+}

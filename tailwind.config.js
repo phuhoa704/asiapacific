@@ -5,6 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         'banner': 'linear-gradient(90deg, rgba(47,53,189,1) 24%, rgba(130,62,205,1) 53%)',
+        'bottom-gradient': 'linear-gradient(360deg, #ae73db, transparent)',
         'mission': 'url(/src/assets/mission.jpg)',
         'passport': 'url(/src/assets/passport.jpg)',
         'house': 'url(/src/assets/house.jpg)',

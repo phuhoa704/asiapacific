@@ -27,7 +27,7 @@ const Footer = () => {
                                 Professional and high-quality service is the only way for us to win the trust of the market and customers. For this reason, we solemnly promise that as long as customers take the first step to cooperate with us, we will spare no effort to help customers succeed and achieve and win-win situation.
                             </p>
                             <div className="flex rounded-full bg-[rgba(255,255,255,0.2)] h-10 w-9/12">
-                                <input type="text" className="border-none bg-transparent w-9/12 h-full text-white pl-2 focus:outline-none focus:border-none" placeholder="Email...." />
+                                <input type="text" className="footer-input border-none bg-transparent w-9/12 h-full text-white pl-2 focus:outline-none focus:border-none" placeholder="Email...." />
                                 <button className="h-full rounded-full w-3/12 bg-[#fdcd2e] text-[#cf2757]">Subcribe</button>
                             </div>
                         </div>

@@ -1,9 +1,14 @@
+import { useRef } from "react";
+import CustomHook from "../../utils/CustomHook";
+
 const ImmigrationServices = () => {
+    const divs = useRef<any[]>([]);
+    CustomHook(divs);
     return (
         <section className="w-full h-[550px] py-20">
             <div className="w-9/12 m-auto grid grid-cols-2 gap-6">
                 <div className="col-span-1">
-                    <div className="grid grid-cols-3 h-full">
+                    <div className="grid grid-cols-3 h-full" ref={(el: any) => el && divs.current.push(el)}>
                         <div className="col-span-2 pt-[50px]">
                             <div className="shadow-secondary h-[300px] bg-passport bg-cover bg-center rounded-tl-[48px] rounded-br-[48px] border border-4 border-white w-9/12 m-auto">
                             </div>
@@ -21,14 +26,14 @@ const ImmigrationServices = () => {
                     </div>
                 </div>
                 <div className="col-span-1 pl-[10%]">
-                    <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs">
+                    <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         asia pacific business consulting and immigration services co., ltd.
                     </div>
-                    <span className="text-[#ae73db] font-medium text-3xl">Focus on providing high-quality investment and immigration consulting services to international customers</span>
-                    <p className="text-[10px] text-[#1d1e1f] mt-4 mb-4">Asia Pacific business consultant Co., Ltd. is a company focused on providing high-quality investment  and migration consulting services to international customers.
+                    <span className="text-[#ae73db] font-medium text-3xl" ref={(el: any) => el && divs.current.push(el)}>Focus on providing high-quality investment and immigration consulting services to international customers</span>
+                    <p className="text-[10px] text-[#1d1e1f] mt-4 mb-4" ref={(el: any) => el && divs.current.push(el)}>Asia Pacific business consultant Co., Ltd. is a company focused on providing high-quality investment  and migration consulting services to international customers.
                         Our mission is to help customers realize their drams of investing and immigrating to Japan. Through our tich experience and professional knowledge, we provide
                         customers with a full range of immigration consulting services.</p>
-                    <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5 w-32'>Learn more</button>
+                    <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5 w-32' ref={(el: any) => el && divs.current.push(el)}>Learn more</button>
                 </div>
             </div>
         </section>

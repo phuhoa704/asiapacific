@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import usa from '../../assets/usa.png';
 
 const Header = () => {
+    const navigate = useNavigate();
     const { pathname } = useLocation();
     const [navLinks] = useState([
         {
@@ -55,7 +56,7 @@ const Header = () => {
                 </div>
             </div>
             <div className="flex justify-between">
-                <div className="flex items-center">
+                <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
                     <div className='w-[70px]'>
                         <img src={logo} alt="" className='w-full' />
                     </div>
