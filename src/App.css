@@ -147,3 +147,12 @@ input.contact-input:-moz-placeholder {
 .writing-mode-vertical {
     writing-mode: vertical-lr;
 }
+
+.flip-img {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
