@@ -126,6 +126,10 @@ input.contact-input:-moz-placeholder {
     color: #ae73db;
 }
 
+select::-webkit-input-placeholder, select:-moz-placeholder {
+    color: #a2a9b8;
+}
+
 /* animation */
 .animation {
     transform: translateY(50px);
@@ -155,4 +159,69 @@ input.contact-input:-moz-placeholder {
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH";
+}
+
+.flag-animation {
+    animation: flagAnimation 1.5s infinite;
+}
+
+.lantern-animation {
+    animation: lanternAnimation 1.5s infinite;
+    animation-delay: .5s;
+}
+
+.airplane-animation {
+    animation: airplaneAnimation 2s infinite;
+}
+
+.service-label {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.tax-service-desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+}
+
+@keyframes flagAnimation {
+
+    0%,
+    100% {
+        transform: rotate(25deg);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+
+    50% {
+        transform: rotate(45deg);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+@keyframes lanternAnimation {
+
+    0%,
+    100% {
+        transform: rotate(-25deg);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+}
+
+@keyframes airplaneAnimation {
+
+    0%,
+    100% {
+        transform: translate(5px, 20px);
+    }
+
+    50% {
+        transform: translate(0px, 0px);
+    }
 }

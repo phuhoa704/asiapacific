@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
-import usa from '../../assets/usa.png';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
+import { ASSETS_API } from '../../configs/apis.config';
+import { changeLang } from '../../redux/actions/Langs';
 
 const Header = () => {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { pathname } = useLocation();
+    const { listLangs, currentLang } = useAppSelector(state => state.lang);
     const [navLinks] = useState([
         {
             id: 1, name: 'Home', href: '/', children: [
@@ -70,19 +74,25 @@ const Header = () => {
                         {navLinks.map(n => (
                             <NavLink key={n.id} to={n.href} className={(pathname === n.href) ? 'text-[#cf2757] mr-3 font-medium' : 'text-[#2328ba] mr-3 font-medium'}>
                                 {n.name}
-                                {(n.children.length > 0) && <i className="fa-solid fa-chevron-down text-sm ml-1"></i>}
+                                {(n.children.length > 0) && <i className="fa-solid fa-chevron-down text-xs ml-1"></i>}
                             </NavLink>
                         ))}
                     </div>
                     <div className="flex items-center mr-4">
                         <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5'>Book a consultation now</button>
                     </div>
-                    <div className="flex items-center">
+                    <div className="group flex items-center relative">
                         <button className="text-[#fdcd2e] bg-[#f5e2d7] flex items-center px-2.5 py-2 rounded">
                             <i className="fa-solid fa-globe"></i>
-                            <img src={usa} alt="" className='w-[25px] ml-2'/>
+                            <img src={`${ASSETS_API}${currentLang.image}`} alt="" className='w-[25px] ml-2' />
                         </button>
-
+                        <ul className="absolute hidden top-14 text-gray-700 pt-1 w-40 group-hover:block">
+                            {listLangs.map(l => (
+                                <li className="" key={l.key}><div className="cursor-pointer bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap flex items-center" onClick={() => {
+                                    dispatch(changeLang(l))
+                                }}><img src={`${ASSETS_API}${l.image}`} alt="" className='w-[25px] mr-2' />{l.name}</div></li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>

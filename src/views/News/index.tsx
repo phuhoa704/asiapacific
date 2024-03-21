@@ -6,7 +6,7 @@ const NewsPage = () => {
     
     return (
         <div>
-            <HeaderBreadscrumb page="news" />
+            <HeaderBreadscrumb page="news" tab="news"/>
             <div className="w-full">
                 <div className="w-1/2 m-auto py-12 flex flex-col items-center">
                     <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs">

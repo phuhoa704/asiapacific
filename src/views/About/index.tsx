@@ -18,7 +18,7 @@ const About = () => {
     CustomHook(divs);
     return (
         <div>
-            <HeaderBreadscrumb page="about us" />
+            <HeaderBreadscrumb page="about us" tab="about us" />
             <div className="w-full">
                 <div className="w-8/12 m-auto py-12">
                     <div className="grid grid-cols-2 gap-4">
