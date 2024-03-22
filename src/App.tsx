@@ -16,6 +16,7 @@ import { getListLang } from "./redux/actions/Langs";
 import ImmigrationServices from "./views/ImmigrationServices";
 import TaxServices from "./views/TaxServices";
 import ConsltancyService from "./views/ConsltancyService";
+import NewsDetail from "./views/NewsDetail";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -31,6 +32,7 @@ function App() {
         <Route path={ROUTES.ABOUT} element={<About />}/>
         <Route path={ROUTES.CONTACT} element={<ContactPage />}/>
         <Route path={ROUTES.NEWS} element={<NewsPage />}/>
+        <Route path={ROUTES.NEWS_DETAIL} element={<NewsDetail />}/>
         <Route path={ROUTES.REGION} element={<RegionPage />}/>
         <Route path={ROUTES.SERVICES} element={<Services />}/>
         <Route path={ROUTES.IMMIGRATION_SERVICES} element={<ImmigrationServices />}/>

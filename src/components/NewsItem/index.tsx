@@ -4,9 +4,12 @@ import moment from "moment";
 import { News } from '../../props';
 import CustomHook from '../../utils/CustomHook';
 import image from '../../assets/contact1.png';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../configs/routes.config';
 
 
 const NewsItem = () => {
+    const navigate = useNavigate();
     const divs = useRef<any[]>([]);
     const [news] = useState<News[]>([
         { id: 1, image: image, date: '11/04/2024', title: 'The most afforable villa project in Niseko, Hokkaido', descr: 'Three major guarantees to ensure the best niseko investment choice on the market' },
@@ -35,7 +38,7 @@ const NewsItem = () => {
                                 </div>
                             </div>
                             <div>
-                                <p className="text-[#ae73db] text-base capitalize cursor-pointer hover:text-[#cf2757] font-semibold">{n.title}</p>
+                                <p className="text-[#ae73db] text-base capitalize cursor-pointer hover:text-[#cf2757] font-semibold" onClick={() => navigate(`${ROUTES.NEWS}/${n.id}`)}>{n.title}</p>
                                 <p className="text-xs capitalize">{n.descr}</p>
                             </div>
                         </div>
