@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import httpRequest from "../../../httpRequest";
 import { APIS } from "../../../configs/apis.config";
-import { saveService, saveServiceDetail } from "../../slices/Service";
+import { saveService, saveServiceDetail, saveServices } from "../../slices/Service";
 import { SubmitAppointmentDto } from "../../dto";
 import { Toast } from "../../../helpers/toast";
 
@@ -67,6 +67,28 @@ export const submitAppointment = createAsyncThunk(
                     icon: "error",
                     title: res.data.message
                 });
+                return {
+                    action: false
+                }
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
+)
+
+export const getServices = createAsyncThunk(
+    'service/getServices',
+    async(data: any, thunky) => {
+        try {
+            const res = await httpRequest.get(APIS.SERVICES)
+            if(res.data.result) {
+                thunky.dispatch(saveServices(res.data.data));
+                return {
+                    action: true
+                }
+            } else {
+                thunky.dispatch(saveServices([]));
                 return {
                     action: false
                 }

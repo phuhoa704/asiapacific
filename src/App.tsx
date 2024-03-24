@@ -18,7 +18,7 @@ import TaxServices from "./views/TaxServices";
 import ConsltancyService from "./views/ConsltancyService";
 import NewsDetail from "./views/NewsDetail";
 import { getMissionContent } from "./redux/actions/Misson";
-import { getServiceContent } from "./redux/actions/Service";
+import { getServiceContent, getServices } from "./redux/actions/Service";
 import { getTeamContent } from "./redux/actions/Team";
 import { getRegionContent, getRegions } from "./redux/actions/Region";
 import { getNewsContent, getNewsList } from "./redux/actions/News";
@@ -26,6 +26,7 @@ import { getContactContent } from "./redux/actions/Contact";
 import { LANGUAGE } from "./configs/constants.config";
 import { getSocialMedia } from "./redux/actions/SocialMedia";
 import { getAboutSteps } from "./redux/actions/About";
+import ServiceDetail from "./views/ServiceDetail";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -46,6 +47,7 @@ function App() {
       dispatch(getSocialMedia([]));
       dispatch(getLogoContent([]));
       dispatch(getAboutSteps([]));
+      dispatch(getServices([]))
   }, [])
   useEffect(() => {
     if(listLangs) {
@@ -74,9 +76,7 @@ function App() {
         <Route path={ROUTES.NEWS_DETAIL} element={<NewsDetail />}/>
         <Route path={ROUTES.REGION} element={<RegionPage />}/>
         <Route path={ROUTES.SERVICES} element={<Services />}/>
-        <Route path={ROUTES.IMMIGRATION_SERVICES} element={<ImmigrationServices />}/>
-        <Route path={ROUTES.TAX_SERVICES} element={<TaxServices />}/>
-        <Route path={ROUTES.CONSLTANCY_SERVICES} element={<ConsltancyService />}/>
+        <Route path={ROUTES.SERVICES_DETAIL} element={<ServiceDetail />}/>
       </Routes>
       <Footer />
     </div>

@@ -3,7 +3,6 @@ import HeaderBreadscrumb from "../../components/HeaderBreadcrumb";
 import moment from "moment";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { translateContent, translateDescr, translateName } from "../../helpers/translator";
-import { ASSETS_API } from "../../configs/apis.config";
 import { useParams } from "react-router-dom";
 import { getNewsDetail } from "../../redux/actions/News";
 

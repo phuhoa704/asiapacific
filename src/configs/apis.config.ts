@@ -15,6 +15,7 @@ export const APIS = {
     TEAM_MEMBER_DETAIL: 'get-content/team-member/show/', //${id}
     SERVICE: 'get-content/service',
     SERVICE_DETAI: 'get-content/service/', //${id}
+    SERVICES: 'services',
     SUBMIT_SERVICE_FORM: 'booking-services',
     SUBMIT_CONTACT_FORM: 'contact',
     REGIONS: 'regions',

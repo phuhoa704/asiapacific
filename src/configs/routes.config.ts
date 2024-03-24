@@ -6,7 +6,5 @@ export const ROUTES = {
     NEWS_DETAIL: '/news/:slug',
     REGION: '/region',
     SERVICES: '/services',
-    IMMIGRATION_SERVICES: '/immigration-services',
-    TAX_SERVICES: '/tax-services',
-    CONSLTANCY_SERVICES: '/consltancy-services'
+    SERVICES_DETAIL: 'services/:slug',
 }

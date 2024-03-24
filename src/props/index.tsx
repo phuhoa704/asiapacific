@@ -119,3 +119,20 @@ export interface AboutStep {
     created_at: string
     updated_at: string
 }
+
+export interface Services {
+    id: number
+    slug: string
+    name: string
+    description: string
+    content: string
+    image: string
+    user_id: number
+    user_update: string | null
+    meta_title: string | null
+    meta_keyword: string | null
+    meta_desc: string | null
+    created_at: string | null
+    updated_at: string | null
+    deleted_at: string | null
+}

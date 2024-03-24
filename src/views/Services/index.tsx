@@ -1,22 +1,38 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import HeaderBreadscrumb from "../../components/HeaderBreadcrumb";
 import CustomHook from "../../utils/CustomHook";
-import passport from '../../assets/passport2.jpg';
-import tax from '../../assets/tax.jpg';
-import court from '../../assets/court.jpg';
 import ServiceCard from "../../components/ServiceCard";
 import ServiceForm from "../../components/ServiceForm";
 import RequestBanner from "../../components/RequestBanner";
-import { ROUTES } from "../../configs/routes.config";
+import { useAppSelector } from "../../redux/hook";
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+// import required modules
+import { Navigation, Autoplay } from 'swiper/modules';
 
 const Services = () => {
-    const [services] = useState([
-        { id: 1, image: passport, icon: '', title: 'Immigration Consltancy Services', href: ROUTES.IMMIGRATION_SERVICES},
-        { id: 2, image: tax, icon: '', title: 'Tax Consltancy Services', href: ROUTES.TAX_SERVICES },
-        { id: 3, image: court, icon: '', title: 'Legal Consltancy Services', href: ROUTES.CONSLTANCY_SERVICES },
-    ])
+    const { services } = useAppSelector(state => state.service);
     const divs = useRef<any[]>([]);
     CustomHook(divs);
+    const swiperParams = {
+        navigation: true,
+        slidesPerView: 3,
+        loop: true,
+        breakpoints: {
+            1200: {
+                slidesPerView: 3,
+            },
+            768: {
+                slidesPerView: 3,
+            },
+            320: {
+                slidesPerView: 3,
+            },
+        },
+    };
     return (
         <div>
             <HeaderBreadscrumb page="services" tab="services" />
@@ -28,13 +44,15 @@ const Services = () => {
                         </div>
                         <div className="text-[#ae73db] font-medium text-3xl text-center" ref={(el: any) => el && divs.current.push(el)}>Asia Pacific Could Provide The Service</div>
                     </div>
-                    <div className="grid grid-cols-3 gap-8 mt-4">
+                    <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
                         {services.map(s => (
-                            <div className="col-span-1">
-                                <ServiceCard item={s}/>
-                            </div>
+                            <SwiperSlide key={s.id}>
+                                <div className="w-10/12 m-auto">
+                                    <ServiceCard item={s} />
+                                </div>
+                            </SwiperSlide>
                         ))}
-                    </div>
+                    </Swiper>
                 </div>
             </div>
             <div className="w-full bg-[#fcf7f7]">
