@@ -1,13 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Home } from "../../../props";
+import { Home, Logo } from "../../../props";
 
 export interface HomeState {
     home: Home[]
+    header: Home[]
+    footer: Home[]
+    logo: Logo
 }
 
 
 const initialState: HomeState = {
-    home: []
+    home: [],
+    header: [],
+    footer: [],
+    logo: {
+        created_at: '',
+        id: 0,
+        image_desc: '',
+        key: '',
+        updated_at: '',
+        value: ''
+    }
 }
 
 export const HomeSlice = createSlice({
@@ -16,9 +29,18 @@ export const HomeSlice = createSlice({
     reducers: {
         saveHome: (state, action) => {
             state.home = action.payload;
+        },
+        saveHeader: (state, action) => {
+            state.header = action.payload;
+        },
+        saveFooter: (state, action) => {
+            state.footer = action.payload;
+        },
+        saveLogo: (state, action) => {
+            state.logo = action.payload;
         }
     }
 })
 
-export const { saveHome } = HomeSlice.actions;
+export const { saveHome, saveHeader, saveFooter, saveLogo } = HomeSlice.actions;
 export default HomeSlice.reducer;

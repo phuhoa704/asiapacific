@@ -16,7 +16,9 @@ const initialState: LangState = {
         image: '',
         key: '',
         lang: '',
-        name: ''
+        name: '',
+        descr_key: '',
+        name_key: ''
     }
 }
 

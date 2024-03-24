@@ -7,9 +7,17 @@ import { HOME_CONSTANTS } from '../../configs/constants.config';
 import { translate } from '../../helpers/translator';
 import { ASSETS_API } from '../../configs/apis.config';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+// import required modules
+import { Navigation, Autoplay } from 'swiper/modules';
+
 const Teams = () => {
     const { home } = useAppSelector(state => state.home);
     const { language, listLangs } = useAppSelector(state => state.lang);
+    const { team } = useAppSelector(state => state.team);
     const [imgsKey] = useState<string[]>([HOME_CONSTANTS.TEAM_FIRST_IMG, HOME_CONSTANTS.TEAM_SECOND_IMG, HOME_CONSTANTS.TEAM_THIRD_IMG, HOME_CONSTANTS.TEAM_FOURTH_IMG])
     const [tag, setTag] = useState<Home>({
         id: 0,
@@ -85,6 +93,22 @@ const Teams = () => {
             setImages(tempArr)
         }
     }, [home])
+    const swiperParams = {
+        navigation: true,
+        slidesPerView: 4,
+        loop: true,
+        breakpoints: {
+            1200: {
+                slidesPerView: 4,
+            },
+            768: {
+                slidesPerView: 4,
+            },
+            320: {
+                slidesPerView: 2,
+            },
+        },
+    };
     return (
         <section className="w-full p-6">
             <div className="w-11/12 m-auto">
@@ -98,11 +122,13 @@ const Teams = () => {
                     </p>
                 </div>
             </div>
-            <div className="w-9/12 grid grid-cols-4 gap-4 h-[250px] m-auto">
-                {images.map(i => (
-                    <div key={i.id} className="col-span-1 bg-[#23b830] bg-cover bg-center border border-[#ae73db] border-4 rounded-xl" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(i.value), listLangs)})` }} ref={(el: any) => el && divs.current.push(el)}></div>
+            <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
+                {team.map(t => (
+                    <SwiperSlide key={t.id}>
+                        <div className="col-span-1 bg-[#23b830] w-9/12 m-auto bg-cover h-[250px] bg-center border border-[#ae73db] border-4 rounded-xl" style={{ backgroundImage: `url(${ASSETS_API}${t.image})` }} ref={(el: any) => el && divs.current.push(el)}></div>
+                    </SwiperSlide>
                 ))}
-            </div>
+            </Swiper>
             <RequestBanner />
         </section>
     );

@@ -1,3 +1,14 @@
+export const HEADER_CONSTANTS = {
+    EMAIL: 'header_01',
+    ADDRESS: 'header_02',
+    TIME: 'header_03',
+    SYMBOL1: 'header_04',
+    SYMBOL2: 'header_05',
+    SYMBOL3: 'header_06',
+    SYMBOL4: 'header_07',
+    BUTTON: 'header_08'
+}
+
 export const HOME_CONSTANTS = {
     //BANNER
     TAG: 'home_01',
@@ -80,3 +91,46 @@ export const HOME_CONSTANTS = {
     CONTACT_US_FIFTH_NAME: 'home_71',
     CONTACT_US_FIFTH_ADDRESS: 'home_72',
 }
+
+export const FOOTER_CONSTANTS = {
+    DESCRIPTION: 'footer_01',
+    TITLE: 'footer_02',
+    PHONE_TITLE: 'footer_03',
+    PHONE: 'footer_04',
+    EMAIL_TITLE: 'footer_05',
+    EMAIL1: 'footer_06',
+    EMAIL2: 'footer_07' ,
+    LOCATION_TITLE: 'footer_08',
+    LOCATION: 'footer_09',
+    TITLE2: 'footer_10',
+    TITLE3: 'footer_11'
+}
+
+export const CONTACT_CONSTANTS = {
+    BREADCRUM: 'contact_01',
+    TAG: 'contact_02',
+    TITLE: 'contact_03',
+    DESCR: 'contact_04',
+    FIRST_TITLE: 'contact_05',
+    FIRST_DESCR: 'contact_06',
+    SECOND_TITLE: 'contact_07',
+    SECOND_DESCR: 'contact_08',
+    THIRD_TITLE: 'contact_09',
+    THIRD_DESCR: 'contact_10',
+    BUTTON: 'contact_11',
+    IMAGE1: 'contact_12',
+    IMAGE2: 'contact_13',
+    IMAGE3: 'contact_14',
+    IMAGE4: 'contact_15'
+}
+
+export const ABOUT_CONSTANTS = {
+    BREADSCRUM: 'aboutus_01',
+    TAG: 'aboutus_02',
+    TITLE: 'aboutus_03',
+    DESCRIPTION: 'aboutus_04',
+    IMAGE: 'aboutus_05'
+}
+
+/* ////////////LANGUAGE//////////////// */
+export const LANGUAGE = 'LANG'

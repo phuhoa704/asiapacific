@@ -1,79 +1,323 @@
-import { useRef, useState } from "react";
-import { Office } from "../../props";
-import hongkong from '../../assets/hongkong.png';
-import japan from '../../assets/japan.png';
-import vietnam from '../../assets/vietnam.png';
+import { useEffect, useRef, useState } from "react";
+import { Home } from "../../props";
 import RequestBanner from "../../components/RequestBanner";
-import contact1 from '../../assets/contact1.png';
-import contact2 from '../../assets/contact2.png';
-import contact3 from '../../assets/contact3.png';
-import contact4 from '../../assets/contact4.png';
 import HeaderBreadscrumb from "../../components/HeaderBreadcrumb";
 import CustomHook from "../../utils/CustomHook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { CONTACT_CONSTANTS } from "../../configs/constants.config";
+import { translate } from "../../helpers/translator";
+import { ASSETS_API } from "../../configs/apis.config";
+import { SubmitContactDto } from "../../redux/dto";
+import { submitContact } from "../../redux/actions/Contact";
 
 const ContactPage = () => {
+    const dispatch = useAppDispatch();
+    const { contact } = useAppSelector(state => state.contact);
+    const { regions } = useAppSelector(state => state.region);
+    const { listLangs, language } = useAppSelector(state => state.lang);
     const divs = useRef<any[]>([]);
-    const [offices] = useState<Office[]>([
-        { id: 1, icon: hongkong, location: 'Hongkong', address: 'Flat/RM 1C, Block A1, 15/F Hang Wai Industry Center, 06 Kin Tai Street, Tuen Mun, NT, Hong Kong' },
-        { id: 2, icon: vietnam, location: 'Viet Nam', address: 'P4-SH06, Park 04, Dien Bien Phu Street, Vinhomes Tan Cang, Binh Thanh District, Ho Chi Minh City, Vietnam' },
-        { id: 3, icon: japan, location: 'Japan', address: '169-0072 1-1, Okubo, Shinjuku-ku, Tokyo Room 205' },
-    ]);
-    const [imgs] = useState([
-        { id: 1, url: contact1 },
-        { id: 2, url: contact2 },
-        { id: 3, url: contact3 },
-        { id: 4, url: contact4 },
-    ])
+    const [imgKeys] = useState<string[]>([CONTACT_CONSTANTS.IMAGE1, CONTACT_CONSTANTS.IMAGE2, CONTACT_CONSTANTS.IMAGE3, CONTACT_CONSTANTS.IMAGE4])
+    const [formVals, setFormVals] = useState<SubmitContactDto>({
+        content: '',
+        email: '',
+        name: '',
+        phone: '',
+        surname: ''
+    })
+    const [breadscrum, setBreadscrum] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [tag, setTag] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [descr, setDescr] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [title, setTitle] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [firstTitle, setFirstTitle] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [firstDescr, setFirstDescr] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [secondTitle, setSecondTitle] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [secondDescr, setSecondDescr] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [thirdTitle, setThirdTitle] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [thirdDescr, setThirdDescr] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [button, setButton] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [images, setImages] = useState<Home[]>([]);
     CustomHook(divs);
+    useEffect(() => {
+        if (contact.length > 0) {
+            //bread scrum
+            const findbs = contact.find(h => h.key === CONTACT_CONSTANTS.BREADCRUM);
+            setBreadscrum(findbs ? findbs : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //bread scrum
+            const findTitle = contact.find(h => h.key === CONTACT_CONSTANTS.TITLE);
+            setTitle(findTitle ? findTitle : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //tag
+            const findTag = contact.find(h => h.key === CONTACT_CONSTANTS.TAG);
+            setTag(findTag ? findTag : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //description
+            const findDescr = contact.find(h => h.key === CONTACT_CONSTANTS.DESCR);
+            setDescr(findDescr ? findDescr : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //first title
+            const findFirstTitle = contact.find(h => h.key === CONTACT_CONSTANTS.FIRST_TITLE);
+            setFirstTitle(findFirstTitle ? findFirstTitle : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //first desc
+            const findFirstDesc = contact.find(h => h.key === CONTACT_CONSTANTS.FIRST_DESCR);
+            setFirstDescr(findFirstDesc ? findFirstDesc : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //first title
+            const findSecondTitle = contact.find(h => h.key === CONTACT_CONSTANTS.SECOND_TITLE);
+            setSecondTitle(findSecondTitle ? findSecondTitle : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //Second desc
+            const findSecondDesc = contact.find(h => h.key === CONTACT_CONSTANTS.SECOND_DESCR);
+            setSecondDescr(findSecondDesc ? findSecondDesc : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //first title
+            const findThirdTitle = contact.find(h => h.key === CONTACT_CONSTANTS.THIRD_TITLE);
+            setThirdTitle(findThirdTitle ? findThirdTitle : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //Third desc
+            const findThirdDesc = contact.find(h => h.key === CONTACT_CONSTANTS.THIRD_DESCR);
+            setThirdDescr(findThirdDesc ? findThirdDesc : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //Button
+            const findButton = contact.find(h => h.key === CONTACT_CONSTANTS.BUTTON);
+            setButton(findButton ? findButton : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //images
+            let tempArr: Home[] = [];
+            imgKeys.forEach(i => {
+                const findImg: any = contact.find(h => h.key === i);
+                tempArr.push(findImg);
+            })
+            setImages(tempArr)
+        }
+    }, [contact])
+    const handleChange = (e: any) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setFormVals({
+            ...formVals,
+            [name]: value
+        })
+    }
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        dispatch(submitContact(formVals))
+    }
     return (
         <div>
-            <HeaderBreadscrumb page="contact" tab="contact"/>
+            <HeaderBreadscrumb page={translate(language, JSON.parse(breadscrum.value), listLangs)} tab={translate(language, JSON.parse(breadscrum.value), listLangs)} />
             <div className="w-full">
                 <div className="w-8/12 m-auto py-12">
                     <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
-                        asia pacific business consulting and immigration services co., ltd.
+                        {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>
-                    <p className="text-[#ae73db] text-3xl font-semibold mb-4" ref={(el: any) => el && divs.current.push(el)}>Contact Our Team</p>
+                    <p className="text-[#ae73db] text-3xl font-semibold mb-4" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(title.value), listLangs)}</p>
                     <div className="grid grid-cols-3 gap-4">
                         <div className="col-span-1">
                             <div className="text-xs text-left mb-4" ref={(el: any) => el && divs.current.push(el)}>
-                                Leverage agile frameworks to provide a robust sysnosis for strategy foster collaborative thinking to further the overall value.
+                                {translate(language, JSON.parse(descr.value), listLangs)}
                             </div>
                             <div className="flex flex-col gap-4">
-                                {offices.map(o => (
-                                    <div key={o.id} className="grid grid-cols-4 gap-2" ref={(el: any) => el && divs.current.push(el)}>
+                                {(regions.length > 0) && regions.map(r => (
+                                    <div className="grid grid-cols-4 gap-2" ref={(el: any) => el && divs.current.push(el)}>
                                         <div className="col-span-1 flex items-center justify-center">
                                             <div className="w-[50px] h-[50px] bg-[#ae73db] rounded-full p-3">
-                                                <img src={o.icon} alt="" />
+                                                <img src={`${ASSETS_API}${r.icon}`} alt="" />
                                             </div>
                                         </div>
                                         <div className="col-span-3 text-left">
-                                            <p className="text-[#ae73db] text-xs font-semibold">{o.location}</p>
-                                            <p className="text-xs">{o.address}</p>
+                                            <p className="text-[#ae73db] text-xs font-semibold">{r.name}</p>
+                                            <p className="text-xs">{r.address}</p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
                         <div className="col-span-2">
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-2 gap-4" ref={(el: any) => el && divs.current.push(el)}>
                                     <div className="col-span-1">
-                                        <input className="p-4 text-xs border-[#ae73db] border text-[#ae73db] bg-white w-full rounded" type="text" placeholder="Name*" />
+                                        <input className="p-4 text-xs border-[#ae73db] border text-[#ae73db] bg-white w-full rounded" type="text" placeholder="Name*" name="name" onChange={handleChange} value={formVals.name} />
                                     </div>
                                     <div className="col-span-1">
-                                        <input className="p-4 text-xs border-[#ae73db] border text-[#ae73db] bg-white w-full rounded" type="text" placeholder="Surname" />
+                                        <input className="p-4 text-xs border-[#ae73db] border text-[#ae73db] bg-white w-full rounded" type="text" placeholder="Surname" name="surname" onChange={handleChange} value={formVals.surname} />
                                     </div>
                                     <div className="col-span-1">
-                                        <input className="p-4 text-xs border-[#ae73db] border text-[#ae73db] bg-white w-full rounded" type="text" placeholder="Phone Number*" />
+                                        <input className="p-4 text-xs border-[#ae73db] border text-[#ae73db] bg-white w-full rounded" type="text" placeholder="Phone Number*" name="phone" onChange={handleChange} value={formVals.phone} />
                                     </div>
                                     <div className="col-span-1">
-                                        <input className="p-4 text-xs border-[#ae73db] border text-[#ae73db] bg-white w-full rounded" type="text" placeholder="Email Address" />
+                                        <input className="p-4 text-xs border-[#ae73db] border text-[#ae73db] bg-white w-full rounded" type="text" placeholder="Email Address" name="email" onChange={handleChange} value={formVals.email} />
                                     </div>
                                     <div className="col-span-2">
-                                        <textarea className="p-4 text-xs border-[#ae73db] border text-[#ae73db] bg-white w-full rounded" rows={3} placeholder="Consultation Content" />
+                                        <textarea className="p-4 text-xs border-[#ae73db] border text-[#ae73db] bg-white w-full rounded" rows={3} placeholder="Consultation Content" name="content" onChange={handleChange} value={formVals.content} />
                                     </div>
-                                    <button className='bg-[#fdcd2e] text-[#cf2757] text-xs rounded p-2.5 w-fit'>Submit message</button>
+                                    <button type="submit" className='bg-[#fdcd2e] text-[#cf2757] text-xs rounded p-2.5 w-fit'>{translate(language, JSON.parse(button.value), listLangs)}</button>
                                 </div>
                             </form>
                         </div>
@@ -82,8 +326,8 @@ const ContactPage = () => {
             </div>
             <div className="w-full mb-4">
                 <div className="w-8/12 m-auto grid grid-cols-4 h-[150px] border-[#ae73db] border" ref={(el: any) => el && divs.current.push(el)}>
-                    {imgs.map(i => (
-                        <div key={i.id} className="col-span-1 bg-center bg-cover border-[#ae73db] border relative" style={{ backgroundImage: `url(${i.url})`}}>
+                    {images.map(i => (
+                        <div key={i.id} className="col-span-1 bg-center bg-cover border-[#ae73db] border relative" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(i.value), listLangs)})` }}>
                             <div className="w-full bg-bottom-gradient h-1/3 absolute bottom-0"></div>
                         </div>
                     ))}

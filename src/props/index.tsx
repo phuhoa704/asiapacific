@@ -13,17 +13,41 @@ export interface Office {
 
 export interface News {
     id: number
-    image: string
-    date: string
-    title: string
-    descr: string
+    slug: string
+    name: string
+    description: string
+    content: string
+    image: string | null
+    user_id: number,
+    created_at: string
+    updated_at: string
+    banner: string | null,
+    category_id: number,
+    meta_title: string | null,
+    meta_keyword: string | null,
+    meta_desc: string | null,
+    deleted_at: string | null,
+    user_update: number
 }
 
 export interface Region {
-    id: number
-    image: string
-    location: string
-    descr: string
+    abstract_name: string
+    address: string
+    content: string
+    created_at: string
+    description: string
+    icon: string | null,
+    id: number,
+    image: string | null,
+    lat: string | null
+    lng: string | null
+    meta_desc: string | null,
+    meta_keyword: string | null
+    meta_title: string | null
+    name: string
+    phone: string
+    slug: string
+    updated_at: string
 }
 
 export interface Home {
@@ -42,6 +66,10 @@ export interface Language {
     default: number
     image: string
     name: string
+    name_key: string
+    descr_key: string
+    content_key: string,
+    title_key: string
 }
 
 export interface Service {
@@ -55,4 +83,39 @@ export interface TaxService {
     id: string
     title: string
     desc: string
+}
+
+export interface Common {
+    id: number
+    name: string
+    description: string
+    slug: string
+    image?: string
+}
+
+export interface SocialMedia {
+    id: number,
+    key: string,
+    value: string | null,
+    created_at: string | null,
+    updated_at: string | null,
+    name: string
+}
+
+export interface Logo {
+    id: number
+    key: string
+    value: string
+    image_desc: string | null
+    created_at: string | null
+    updated_at: string | null
+}
+
+export interface AboutStep {
+    id: number
+    title: string
+    description: string
+    order: number,
+    created_at: string
+    updated_at: string
 }

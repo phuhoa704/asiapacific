@@ -220,7 +220,7 @@ const Banner = () => {
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>
                     <span className="capitalize font-medium text-white text-5xl">{translate(language, JSON.parse(slogan.value), listLangs)}</span>
-                    <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5 w-32'>Learn more</button>
+                    <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5 w-32' onClick={() => window.scrollTo(0,550)}>Learn more</button>
                 </div>
                 <div className="relative col-span-1">
                     <div className="blossom"></div>

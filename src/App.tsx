@@ -9,21 +9,60 @@ import ContactPage from "./views/Contact";
 import NewsPage from "./views/News";
 import RegionPage from "./views/Region";
 import Services from "./views/Services";
-import { useAppDispatch } from "./redux/hook";
+import { useAppDispatch, useAppSelector } from "./redux/hook";
 import { useEffect } from "react";
-import { getHomeContent } from "./redux/actions/Home";
-import { getListLang } from "./redux/actions/Langs";
+import { getFooterContent, getHeaderContent, getHomeContent, getLogoContent } from "./redux/actions/Home";
+import { changeLang, getListLang } from "./redux/actions/Langs";
 import ImmigrationServices from "./views/ImmigrationServices";
 import TaxServices from "./views/TaxServices";
 import ConsltancyService from "./views/ConsltancyService";
 import NewsDetail from "./views/NewsDetail";
+import { getMissionContent } from "./redux/actions/Misson";
+import { getServiceContent } from "./redux/actions/Service";
+import { getTeamContent } from "./redux/actions/Team";
+import { getRegionContent, getRegions } from "./redux/actions/Region";
+import { getNewsContent, getNewsList } from "./redux/actions/News";
+import { getContactContent } from "./redux/actions/Contact";
+import { LANGUAGE } from "./configs/constants.config";
+import { getSocialMedia } from "./redux/actions/SocialMedia";
+import { getAboutSteps } from "./redux/actions/About";
 
 function App() {
   const dispatch = useAppDispatch();
+  const { listLangs } = useAppSelector(state => state.lang);
   useEffect(() => {
       dispatch(getHomeContent([]))
       dispatch(getListLang([]))
+      dispatch(getMissionContent([]));
+      dispatch(getServiceContent([]));
+      dispatch(getTeamContent([]));
+      dispatch(getHeaderContent({}));
+      dispatch(getFooterContent({}));
+      dispatch(getRegionContent([]));
+      dispatch(getNewsContent([]));
+      dispatch(getContactContent([]));
+      dispatch(getRegions([]));
+      dispatch(getNewsList([]));
+      dispatch(getSocialMedia([]));
+      dispatch(getLogoContent([]));
+      dispatch(getAboutSteps([]));
   }, [])
+  useEffect(() => {
+    if(listLangs) {
+      const crtLang = window.localStorage.getItem(LANGUAGE);
+      if(crtLang) {
+        let finder = listLangs.find(l => l.lang === crtLang)
+        if(finder) {
+          dispatch(changeLang(finder))
+        }
+      } else {
+        const defaultLang = listLangs.find(l => l.default === 1);
+        if(defaultLang) {
+          dispatch(changeLang(defaultLang))
+        }
+      }
+    }
+  },[listLangs])
   return (
     <div className='App poppins-regular text-sm'>
       <Header />

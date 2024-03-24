@@ -1,12 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import CustomHook from "../../utils/CustomHook";
-import { useAppSelector } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { Home } from "../../props";
 import { HOME_CONSTANTS } from "../../configs/constants.config";
-import { translate } from "../../helpers/translator";
+import { translate, translateName } from "../../helpers/translator";
 import { ASSETS_API } from "../../configs/apis.config";
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+// import required modules
+import { Navigation, Autoplay } from 'swiper/modules';
+import { getMissionContentDetail } from "../../redux/actions/Misson";
+
 const Mission = () => {
+    const dispatch = useAppDispatch();
     const { home } = useAppSelector(state => state.home);
     const { language, listLangs } = useAppSelector(state => state.lang);
     const [tag, setTag] = useState<Home>({
@@ -92,6 +101,7 @@ const Mission = () => {
     })
     const divs = useRef<any[]>([]);
     const [hover, setHover] = useState<number>(1);
+    const { mission } = useAppSelector(state => state.mission);
     CustomHook(divs);
     useEffect(() => {
         if (home.length > 0) {
@@ -196,6 +206,22 @@ const Mission = () => {
             })
         }
     }, [home])
+    const swiperParams = {
+        navigation: true,
+        slidesPerView: 3,
+        loop: true,
+        breakpoints: {
+            1200: {
+                slidesPerView: 3,
+            },
+            768: {
+                slidesPerView: 3,
+            },
+            320: {
+                slidesPerView: 3,
+            },
+        },
+    };
     return (
         <section className="w-full p-6">
             <div className="w-11/12 m-auto">
@@ -203,46 +229,29 @@ const Mission = () => {
                     <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>
-                    <div className="text-[#ae73db] font-medium text-3xl" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(title.value), listLangs)}</div>
+                    <div className="text-[#ae73db] font-medium text-3xl capitalize" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(title.value), listLangs)}</div>
                     <p className="text-[11px] text-[#1d1e1f] mt-4 mb-4 text-center" ref={(el: any) => el && divs.current.push(el)}>
                         {translate(language, JSON.parse(description.value), listLangs)}
                     </p>
                 </div>
-                <div className="flex justify-evenly">
-                    <div className={`group p-6 shadow-2xl rounded h-[300px] bg-cover bg-center flex flex-col justify-between transition-all`} onMouseEnter={() => setHover(1)} onMouseLeave={() => setHover(0)} ref={(el: any) => el && divs.current.push(el)}
-                        style={(hover === 1) ? { backgroundColor: '#4287f5' } : { backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(firstImg.value), listLangs)})` }}
-                    >
-                        <div className='rounded-full bg-white w-[50px] h-[50px] p-4 flex items-center justify-center text-[#223cd1] text-lg opacity-0 group-hover:opacity-100'>
-                            <i className="fa-solid fa-chart-column"></i>
-                        </div>
-                        <div>
-                            <div className='text-xl text-white font-semibold mb-2'>{translate(language, JSON.parse(firstTitle.value), listLangs)}</div>
-                            <button className='bg-white text-[#cf2757] rounded p-2.5 w-32'>View Details</button>
-                        </div>
-                    </div>
-                    <div className={`group p-6 shadow-2xl rounded h-[300px] bg-cover bg-center flex flex-col justify-between transition-all`} onMouseEnter={() => setHover(2)} onMouseLeave={() => setHover(0)} ref={(el: any) => el && divs.current.push(el)}
-                        style={(hover === 2) ? { backgroundColor: '#4287f5' } : { backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(secondImg.value), listLangs)})` }}
-                    >
-                        <div className='rounded-full bg-white w-[50px] h-[50px] p-4 flex items-center justify-center text-[#223cd1] text-lg opacity-0 group-hover:opacity-100'>
-                            <i className="fa-solid fa-chart-column"></i>
-                        </div>
-                        <div>
-                            <div className='text-xl text-white font-semibold mb-2'>{translate(language, JSON.parse(secondTitle.value), listLangs)}</div>
-                            <button className='bg-white text-[#cf2757] rounded p-2.5 w-32'>View Details</button>
-                        </div>
-                    </div>
-                    <div className={`group p-6 shadow-2xl rounded h-[300px] bg-cover bg-center ${hover === 3 ? 'bg-[#4287f5]' : 'bg-mission'} flex flex-col justify-between transition-all`} onMouseEnter={() => setHover(3)} onMouseLeave={() => setHover(0)} ref={(el: any) => el && divs.current.push(el)}
-                        style={(hover === 3) ? { backgroundColor: '#4287f5' } : { backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(thirdImg.value), listLangs)})` }}
-                    >
-                        <div className='rounded-full bg-white w-[50px] h-[50px] p-4 flex items-center justify-center text-[#223cd1] text-lg opacity-0 group-hover:opacity-100'>
-                            <i className="fa-solid fa-chart-column"></i>
-                        </div>
-                        <div>
-                            <div className='text-xl text-white font-semibold mb-2'>{translate(language, JSON.parse(thirdTitle.value), listLangs)}</div>
-                            <button className='bg-white text-[#cf2757] rounded p-2.5 w-32'>View Details</button>
-                        </div>
-                    </div>
-                </div>
+                <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
+                    {mission.map(m => (
+                        <SwiperSlide key={m.id}>
+                            <div className={`group p-6 shadow-2xl rounded h-[300px] bg-cover bg-center flex flex-col justify-between transition-all w-8/12 m-auto`} onMouseEnter={() => setHover(m.id)} onMouseLeave={() => setHover(0)} ref={(el: any) => el && divs.current.push(el)}
+                                style={(hover === m.id) ? { backgroundColor: '#4287f5' } : { backgroundImage: `url(${ASSETS_API}${m.image})` }}
+                                onClick={() => dispatch(getMissionContentDetail(m.id))}
+                            >
+                                <div className='rounded-full bg-white w-[50px] h-[50px] p-4 flex items-center justify-center text-[#223cd1] text-lg opacity-0 group-hover:opacity-100'>
+                                    <i className="fa-solid fa-chart-column"></i>
+                                </div>
+                                <div>
+                                    <div className='text-xl text-white font-semibold mb-2'>{translateName(language, JSON.parse(m.name), listLangs)}</div>
+                                    <button className='bg-white text-[#cf2757] rounded p-2.5 w-32'>View Details</button>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
         </section>
     );

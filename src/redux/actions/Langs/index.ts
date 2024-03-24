@@ -3,6 +3,7 @@ import httpRequest from "../../../httpRequest";
 import { APIS } from "../../../configs/apis.config";
 import { setCurrentLang, setLang, setListLangs } from "../../slices/Langs";
 import { Language } from "../../../props";
+import { LANGUAGE } from "../../../configs/constants.config";
 
 export const getListLang = createAsyncThunk(
     'lang/getListLang',
@@ -17,7 +18,11 @@ export const getListLang = createAsyncThunk(
                         key: `value_${t.key}`,
                         default: t.default,
                         image: t.image,
-                        name: t.name
+                        name: t.name,
+                        name_key: `name_${t.key}`,
+                        descr_key: `description_${t.key}`,
+                        content_key: `content_${t.key}`,
+                        title_key: `title_${t.key}`,
                     }
                 })));
                 return {
@@ -41,6 +46,7 @@ export const changeLang = createAsyncThunk(
     'lang/changeLang',
     async(data: Language, thunky) => {
         try {
+            window.localStorage.setItem(LANGUAGE, data.lang)
             thunky.dispatch(setLang(data.lang));
             thunky.dispatch(setCurrentLang(data));
         }catch(err){

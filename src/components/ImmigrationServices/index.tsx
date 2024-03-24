@@ -5,8 +5,11 @@ import { Home } from "../../props";
 import { HOME_CONSTANTS } from "../../configs/constants.config";
 import { ASSETS_API } from "../../configs/apis.config";
 import { translate } from "../../helpers/translator";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../configs/routes.config";
 
 const ImmigrationServices = () => {
+    const navigate = useNavigate();
     const { home } = useAppSelector(state => state.home);
     const { language, listLangs } = useAppSelector(state => state.lang);
     const [leftImg, setLeftImg] = useState<Home>({
@@ -162,7 +165,7 @@ const ImmigrationServices = () => {
                     </div>
                     <span className="text-[#ae73db] font-medium text-3xl" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(slogan.value), listLangs)}</span>
                     <p className="text-[10px] text-[#1d1e1f] mt-4 mb-4" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(description.value), listLangs)}</p>
-                    <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5 w-32' ref={(el: any) => el && divs.current.push(el)}>Learn more</button>
+                    <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5 w-32' ref={(el: any) => el && divs.current.push(el)} onClick={() => navigate(ROUTES.SERVICES)}>Learn more</button>
                 </div>
             </div>
         </section>

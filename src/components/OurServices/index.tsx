@@ -3,11 +3,19 @@ import CustomHook from "../../utils/CustomHook";
 import { useAppSelector } from "../../redux/hook";
 import { Home } from "../../props";
 import { HOME_CONSTANTS } from "../../configs/constants.config";
-import { translate } from "../../helpers/translator";
+import { translate, translateDescr, translateName } from "../../helpers/translator";
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+// import required modules
+import { Navigation, Autoplay } from 'swiper/modules';
 
 const OurServices = () => {
     const { home } = useAppSelector(state => state.home);
     const { language, listLangs } = useAppSelector(state => state.lang);
+    const { service } = useAppSelector(state => state.service);
     const [tag, setTag] = useState<Home>({
         id: 0,
         created_at: '',
@@ -294,6 +302,22 @@ const OurServices = () => {
             })
         }
     }, [home])
+    const swiperParams = {
+        navigation: true,
+        slidesPerView: 6,
+        loop: true,
+        breakpoints: {
+            1200: {
+                slidesPerView: 6,
+            },
+            768: {
+                slidesPerView: 4,
+            },
+            320: {
+                slidesPerView: 2,
+            },
+        },
+    };
     return (
         <section className="w-full p-6">
             <div className="w-11/12 m-auto">
@@ -301,53 +325,22 @@ const OurServices = () => {
                     <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>
-                    <div className="text-[#ae73db] font-medium text-3xl" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(tag.value), listLangs)}</div>
+                    <div className="text-[#ae73db] font-medium text-3xl capitalize" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(tag.value), listLangs)}</div>
                     <p className="text-[11px] text-[#1d1e1f] mt-4 mb-4 text-center" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(desc.value), listLangs)}</p>
                 </div>
-                <div className="grid grid-cols-6 gap-4">
-                    <div className="group text-[#223cd1]" ref={(el: any) => el && divs.current.push(el)}>
-                        <div className="service-icon text-2xl w-10 h-10 group-hover:text-[#cf2757]">
-                            <i className="fa-solid fa-list-check"></i>
-                        </div>
-                        <div className="text-sm font-medium group-hover:text-[#cf2757] cursor-default">{translate(language, JSON.parse(firstTitle.value), listLangs)}</div>
-                        <p className="text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translate(language, JSON.parse(firstDesc.value), listLangs)}</p>
-                    </div>
-                    <div className="group text-[#223cd1]" ref={(el: any) => el && divs.current.push(el)}>
-                        <div className="service-icon text-2xl w-10 h-10 group-hover:text-[#cf2757]">
-                            <i className="fa-solid fa-list-check"></i>
-                        </div>
-                        <div className="text-sm font-medium group-hover:text-[#cf2757] cursor-default">{translate(language, JSON.parse(secondTitle.value), listLangs)}</div>
-                        <p className="text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translate(language, JSON.parse(secondDesc.value), listLangs)}</p>
-                    </div>
-                    <div className="group text-[#223cd1]" ref={(el: any) => el && divs.current.push(el)}>
-                        <div className="service-icon text-2xl w-10 h-10 group-hover:text-[#cf2757]">
-                            <i className="fa-solid fa-list-check"></i>
-                        </div>
-                        <div className="text-sm font-medium group-hover:text-[#cf2757] cursor-default">{translate(language, JSON.parse(thirdTitle.value), listLangs)}</div>
-                        <p className="text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translate(language, JSON.parse(thirdDesc.value), listLangs)}</p>
-                    </div>
-                    <div className="group text-[#223cd1]" ref={(el: any) => el && divs.current.push(el)}>
-                        <div className="service-icon text-2xl w-10 h-10 group-hover:text-[#cf2757]">
-                            <i className="fa-solid fa-list-check"></i>
-                        </div>
-                        <div className="text-sm font-medium group-hover:text-[#cf2757] cursor-default">{translate(language, JSON.parse(fourthTitle.value), listLangs)}</div>
-                        <p className="text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translate(language, JSON.parse(fourthDesc.value), listLangs)}</p>
-                    </div>
-                    <div className="group text-[#223cd1]" ref={(el: any) => el && divs.current.push(el)}>
-                        <div className="service-icon text-2xl w-10 h-10 group-hover:text-[#cf2757]">
-                            <i className="fa-solid fa-list-check"></i>
-                        </div>
-                        <div className="text-sm font-medium group-hover:text-[#cf2757] cursor-default">{translate(language, JSON.parse(fifthTitle.value), listLangs)}</div>
-                        <p className="text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translate(language, JSON.parse(fifthDesc.value), listLangs)}</p>
-                    </div>
-                    <div className="group text-[#223cd1]" ref={(el: any) => el && divs.current.push(el)}>
-                        <div className="service-icon text-2xl w-10 h-10 group-hover:text-[#cf2757]">
-                            <i className="fa-solid fa-list-check"></i>
-                        </div>
-                        <div className="text-sm font-medium group-hover:text-[#cf2757] cursor-default">{translate(language, JSON.parse(sixthTitle.value), listLangs)}</div>
-                        <p className="text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translate(language, JSON.parse(sixthDesc.value), listLangs)}</p>
-                    </div>
-                </div>
+                <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
+                    {service.map(s => (
+                        <SwiperSlide key={s.id}>
+                            <div className="group text-[#223cd1] w-11/12 m-auto" ref={(el: any) => el && divs.current.push(el)}>
+                                <div className="service-icon text-2xl w-10 h-10 group-hover:text-[#cf2757]">
+                                    <i className="fa-solid fa-list-check"></i>
+                                </div>
+                                <div className="text-sm font-medium group-hover:text-[#cf2757] cursor-default">{translateName(language, JSON.parse(s.name), listLangs)}</div>
+                                <p className="text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translateDescr(language, JSON.parse(s.description), listLangs)}</p>
+                            </div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
         </section>
     );

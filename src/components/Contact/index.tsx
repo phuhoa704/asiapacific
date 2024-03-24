@@ -14,6 +14,7 @@ mapboxgl.accessToken = accessToken;
 function ContactUs() {
     const { home } = useAppSelector(state => state.home);
     const { language, listLangs } = useAppSelector(state => state.lang);
+    const { regions } = useAppSelector(state => state.region);
     const [tag, setTag] = useState<Home>({
         id: 0,
         created_at: '',
@@ -274,16 +275,16 @@ function ContactUs() {
                     <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>
-                    <div className="text-[#ae73db] font-medium text-3xl" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(tag.value), listLangs)}</div>
+                    <div className="text-[#ae73db] font-medium text-3xl capitalize" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(tag.value), listLangs)}</div>
                 </div>
                 <div className="flex justify-evenly my-6" ref={(el: any) => el && divs.current.push(el)}>
                     <ContactCard title={translate(language, JSON.parse(secondName.value), listLangs)} address={translate(language, JSON.parse(secondAddress.value), listLangs)} />
                     <ContactCard title={translate(language, JSON.parse(fourthName.value), listLangs)} address={translate(language, JSON.parse(fourthAddress.value), listLangs)} />
                 </div>
                 <div className="flex justify-between mb-6" ref={(el: any) => el && divs.current.push(el)}>
-                    <ContactCard title={translate(language, JSON.parse(firstName.value), listLangs)} address={translate(language, JSON.parse(firstAddress.value), listLangs)} />
-                    <ContactCard title={translate(language, JSON.parse(thirdName.value), listLangs)} address={translate(language, JSON.parse(thirdAddress.value), listLangs)} />
-                    <ContactCard title={translate(language, JSON.parse(fifthName.value), listLangs)} address={translate(language, JSON.parse(fifthAddress.value), listLangs)} />
+                    {regions.map(r => (
+                        <ContactCard title={r.abstract_name} address={r.address} />
+                    ))}
                 </div>
             </div>
             <div className="w-8/12 m-auto h-[400px]" id="map" ref={(el: any) => el && divs.current.push(el)}></div>

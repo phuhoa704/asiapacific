@@ -3,7 +3,6 @@ import RequestBanner from "../../components/RequestBanner";
 import NewsItem from "../../components/NewsItem";
 
 const NewsPage = () => {
-    
     return (
         <div>
             <HeaderBreadscrumb page="news" tab="news"/>
