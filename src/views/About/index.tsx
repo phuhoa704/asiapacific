@@ -3,7 +3,6 @@ import HeaderBreadscrumb from "../../components/HeaderBreadcrumb";
 import RequestBanner from "../../components/RequestBanner";
 import './styles.scss'
 import VerticalSteps from "../../components/VerticalSteps";
-import meeting from '../../assets/meeting.jpg';
 import CustomHook from "../../utils/CustomHook";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { translate, translateDescr, translateTitle } from "../../helpers/translator";
@@ -132,13 +131,13 @@ const About = () => {
                 <div className="w-11/12 md:w-8/12 m-auto py-12">
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                         <div className="col-span-1">
-                            <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
+                            <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs">
                                 {translate(language, JSON.parse(tag.value), listLangs)}
                             </div>
-                            <span className="text-[#ae73db] font-medium text-3xl" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(title.value), listLangs)}</span>
+                            <span className="text-[#ae73db] font-medium text-3xl">{translate(language, JSON.parse(title.value), listLangs)}</span>
                         </div>
                         <div className="col-span-1">
-                            <div className="text-left text-xs text-[#393b3a] flex items-center" ref={(el: any) => el && divs.current.push(el)}>
+                            <div className="text-left text-xs text-[#393b3a] flex items-center">
                                 {translate(language, JSON.parse(description.value), listLangs)}
                             </div>
                         </div>

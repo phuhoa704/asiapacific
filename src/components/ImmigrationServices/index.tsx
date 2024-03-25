@@ -142,7 +142,7 @@ const ImmigrationServices = () => {
         <section className="w-full py-16">
             <div className="w-11/12 m-auto grid grid-cols-2 gap-6 md:w-9/12 lg:w-11/12">
                 <div className="col-span-2 lg:col-span-1">
-                    <div className="grid grid-cols-3 h-full" ref={(el: any) => el && divs.current.push(el)}>
+                    <div className="grid grid-cols-3 h-full">
                         <div className="col-span-2 pt-[50px]">
                             <div className="shadow-secondary h-[300px] bg-cover bg-center rounded-tl-[48px] rounded-br-[48px] border border-4 border-white w-9/12 m-auto" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(leftImg.value), listLangs)})`}}>
                             </div>
@@ -160,12 +160,12 @@ const ImmigrationServices = () => {
                     </div>
                 </div>
                 <div className="col-span-2 pl-0 lg:pl-[10%] lg:col-span-1">
-                    <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
+                    <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs">
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>
-                    <span className="text-[#ae73db] font-medium text-3xl" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(slogan.value), listLangs)}</span>
-                    <p className="text-[10px] text-[#1d1e1f] mt-4 mb-4" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(description.value), listLangs)}</p>
-                    <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5 w-32' ref={(el: any) => el && divs.current.push(el)} onClick={() => navigate(ROUTES.SERVICES)}>Learn more</button>
+                    <span className="text-[#ae73db] font-medium text-3xl">{translate(language, JSON.parse(slogan.value), listLangs)}</span>
+                    <p className="text-[10px] text-[#1d1e1f] mt-4 mb-4">{translate(language, JSON.parse(description.value), listLangs)}</p>
+                    <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5 w-32' onClick={() => navigate(ROUTES.SERVICES)}>Learn more</button>
                 </div>
             </div>
         </section>

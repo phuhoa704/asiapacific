@@ -60,60 +60,6 @@ const ContactPage = () => {
         updated_at: '',
         value: '{}'
     })
-    const [firstTitle, setFirstTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [firstDescr, setFirstDescr] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [secondTitle, setSecondTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [secondDescr, setSecondDescr] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [thirdTitle, setThirdTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [thirdDescr, setThirdDescr] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
     const [button, setButton] = useState<Home>({
         id: 0,
         created_at: '',
@@ -171,72 +117,6 @@ const ContactPage = () => {
                 updated_at: '',
                 value: '{}'
             })
-            //first title
-            const findFirstTitle = contact.find(h => h.key === CONTACT_CONSTANTS.FIRST_TITLE);
-            setFirstTitle(findFirstTitle ? findFirstTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //first desc
-            const findFirstDesc = contact.find(h => h.key === CONTACT_CONSTANTS.FIRST_DESCR);
-            setFirstDescr(findFirstDesc ? findFirstDesc : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //first title
-            const findSecondTitle = contact.find(h => h.key === CONTACT_CONSTANTS.SECOND_TITLE);
-            setSecondTitle(findSecondTitle ? findSecondTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //Second desc
-            const findSecondDesc = contact.find(h => h.key === CONTACT_CONSTANTS.SECOND_DESCR);
-            setSecondDescr(findSecondDesc ? findSecondDesc : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //first title
-            const findThirdTitle = contact.find(h => h.key === CONTACT_CONSTANTS.THIRD_TITLE);
-            setThirdTitle(findThirdTitle ? findThirdTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //Third desc
-            const findThirdDesc = contact.find(h => h.key === CONTACT_CONSTANTS.THIRD_DESCR);
-            setThirdDescr(findThirdDesc ? findThirdDesc : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
             //Button
             const findButton = contact.find(h => h.key === CONTACT_CONSTANTS.BUTTON);
             setButton(findButton ? findButton : {
@@ -274,10 +154,10 @@ const ContactPage = () => {
             <HeaderBreadscrumb page={translate(language, JSON.parse(breadscrum.value), listLangs)} tab={translate(language, JSON.parse(breadscrum.value), listLangs)} />
             <div className="w-full">
                 <div className="w-11/12 lg:w-8/12 m-auto py-12">
-                    <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
+                    <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs">
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>
-                    <p className="text-[#ae73db] text-3xl font-semibold mb-4" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(title.value), listLangs)}</p>
+                    <p className="text-[#ae73db] text-3xl font-semibold mb-4">{translate(language, JSON.parse(title.value), listLangs)}</p>
                     <div className="grid grid-cols-3 gap-4">
                         <div className="col-span-3 md:col-span-1">
                             <div className="text-xs text-left mb-4" ref={(el: any) => el && divs.current.push(el)}>

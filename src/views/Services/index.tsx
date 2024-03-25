@@ -39,10 +39,10 @@ const Services = () => {
             <div className="w-full">
                 <div className="w-8/12 m-auto py-12">
                     <div className="flex flex-col items-center m-auto">
-                        <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
+                        <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs">
                             asia pacific business consulting and immigration services co., ltd.
                         </div>
-                        <div className="text-[#ae73db] font-medium text-3xl text-center mb-4" ref={(el: any) => el && divs.current.push(el)}>Asia Pacific Could Provide The Service</div>
+                        <div className="text-[#ae73db] font-medium text-3xl text-center mb-4">Asia Pacific Could Provide The Service</div>
                     </div>
                     <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
                         {services.map(s => (

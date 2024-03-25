@@ -161,7 +161,7 @@ function ContactUs() {
                 </div>
                 <div className="flex flex-col items-center md:flex-row justify-center md:justify-between mb-6 gap-4 md:gap-2 lg:gap-0" ref={(el: any) => el && divs.current.push(el)}>
                     {regions.map(r => (
-                        <ContactCard title={r.abstract_name} address={r.address} />
+                        <ContactCard key={r.id} title={r.abstract_name} address={r.address} />
                     ))}
                 </div>
             </div>
