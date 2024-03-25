@@ -152,6 +152,10 @@ select::-webkit-input-placeholder, select:-moz-placeholder {
     writing-mode: vertical-lr;
 }
 
+.writing-mode-horizontal {
+    writing-mode: horizontal-tb;
+}
+
 .flip-img {
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
@@ -178,12 +182,20 @@ select::-webkit-input-placeholder, select:-moz-placeholder {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 
 .tax-service-desc {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
+    overflow: hidden;
+}
+
+/* disable swiper arrow */
+.swiper-button-prev,
+.swiper-button-next {
+  display: none !important;
 }
 
 @keyframes flagAnimation {

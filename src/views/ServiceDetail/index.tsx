@@ -30,7 +30,7 @@ const ServiceDetail = () => {
         <div>
             <HeaderBreadscrumb page="services" tab={servicesById.name ? translateName(language, JSON.parse(servicesById.name), listLangs) : ''} />
             <div className="w-full">
-                <div className="w-8/12 m-auto py-12">
+                <div className="w-11/12 lg:w-8/12 m-auto py-12">
                     <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         {servicesById.name ? translateName(language, JSON.parse(servicesById.name), listLangs) : ''}
                     </div>

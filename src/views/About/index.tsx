@@ -129,8 +129,8 @@ const About = () => {
         <div>
             <HeaderBreadscrumb page={translate(language, JSON.parse(breadscrum.value), listLangs)} tab={translate(language, JSON.parse(breadscrum.value), listLangs)} />
             <div className="w-full">
-                <div className="w-8/12 m-auto py-12">
-                    <div className="grid grid-cols-2 gap-4">
+                <div className="w-11/12 md:w-8/12 m-auto py-12">
+                    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                         <div className="col-span-1">
                             <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                                 {translate(language, JSON.parse(tag.value), listLangs)}
@@ -143,7 +143,7 @@ const About = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 mt-8">
+                    <div className="grid grid-cols-1 gap-4 mt-8 lg:grid-cols-2">
                         <div className="col-span-1">
                             <div className="w-full rounded-tl-[56px] rounded-br-[56px] h-[500px] bg-center bg-cover" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(image.value), listLangs)})` }} ref={(el: any) => el && divs.current.push(el)}>
                             </div>

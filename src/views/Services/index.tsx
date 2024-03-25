@@ -26,10 +26,10 @@ const Services = () => {
                 slidesPerView: 3,
             },
             768: {
-                slidesPerView: 3,
+                slidesPerView: 2,
             },
             320: {
-                slidesPerView: 3,
+                slidesPerView: 1,
             },
         },
     };
@@ -42,7 +42,7 @@ const Services = () => {
                         <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                             asia pacific business consulting and immigration services co., ltd.
                         </div>
-                        <div className="text-[#ae73db] font-medium text-3xl text-center" ref={(el: any) => el && divs.current.push(el)}>Asia Pacific Could Provide The Service</div>
+                        <div className="text-[#ae73db] font-medium text-3xl text-center mb-4" ref={(el: any) => el && divs.current.push(el)}>Asia Pacific Could Provide The Service</div>
                     </div>
                     <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
                         {services.map(s => (
@@ -56,8 +56,8 @@ const Services = () => {
                 </div>
             </div>
             <div className="w-full bg-[#fcf7f7]">
-                <div className="w-7/12 m-auto py-12">
-                    <div className="grid grid-cols-2 gap-4">
+                <div className="w-11/12 lg:w-7/12 m-auto py-12">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div className="col-span-1" ref={(el: any) => el && divs.current.push(el)}>
                             <ServiceForm />
                         </div>
@@ -72,12 +72,12 @@ const Services = () => {
                             <div className="text-xs mt-6 text-[#807d7d]" ref={(el: any) => el && divs.current.push(el)}>
                                 Or You May <span className="text-[#ae73db]">Call Us</span> For Appointment
                             </div>
-                            <div className="mt-4 flex gap-4 text-[#ae73db]" ref={(el: any) => el && divs.current.push(el)}>
+                            <a href={`tel:+85223411444`} className="mt-4 flex gap-4 text-[#ae73db] cursor-pointer" ref={(el: any) => el && divs.current.push(el)}>
                                 <div className="h-5 w-5 flex items-center justify-center text-white rounded-full bg-[#ae73db] p-3 text-xs">
                                     <i className="fa-solid fa-phone"></i>
                                 </div>
                                 <span>(+85) 22341 1444</span>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>

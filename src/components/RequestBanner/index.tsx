@@ -97,17 +97,17 @@ const RequestBanner = () => {
         }
     },[home])
     return (
-        <div className="w-8/12 m-auto h-[100px] flex justify-between mt-8 shadow-primary rounded-xl p-8" style={{ backgroundImage: `url(${banner})` }}  ref={(el: any) => el && divs.current.push(el)}>
+        <div className="w-full m-auto h-[100px] flex justify-between mt-8 shadow-primary rounded-xl p-3 md:w-8/12 md:py-8 items-center" style={{ backgroundImage: `url(${banner})` }}  ref={(el: any) => el && divs.current.push(el)}>
             <div className="flex items-center">
-                <img className='w-[50px] mr-4' src={`${ASSETS_API}${translate(language, JSON.parse(img.value), listLangs)}`} alt="" />
-                <div className='text-white font-semibold'>
+                <img className='w-[30px] mr-4 md:w-[50px]' src={`${ASSETS_API}${translate(language, JSON.parse(img.value), listLangs)}`} alt="" />
+                <div className='text-white font-semibold text-xs md:text-sm'>
                     <p>{translate(language, JSON.parse(title.value), listLangs)}</p>
                     <p>{translate(language, JSON.parse(subTitle.value), listLangs)}</p>
                 </div>
             </div>
             <div className='text-right'>
                 <p className='text-white text-xs'>{translate(language, JSON.parse(subTitle.value), listLangs)}</p>
-                <p className='drop-shadow-lg text-[#ebba34] text-lg font-bold tracking-widest'>{translate(language, JSON.parse(phone.value), listLangs)}</p>
+                <p className='drop-shadow-lg text-[#ebba34] text-sm font-bold tracking-widest break-all whitespace-pre md:text-lg'>{translate(language, JSON.parse(phone.value), listLangs)}</p>
             </div>
         </div>
     );

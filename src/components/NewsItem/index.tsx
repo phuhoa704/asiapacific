@@ -21,7 +21,7 @@ const NewsItem = () => {
         <div className="flex flex-col gap-4">
             {newsList.map(n => (
                 <div className="p-2" ref={(el: any) => el && divs.current.push(el)}>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div className="col-span-1 news-image">
                             <div className="w-full h-full">
                                 <img src={`${ASSETS_API}${n.image}`} alt="" />

@@ -237,9 +237,9 @@ function ProfessionalKnowledge() {
         }
     }, [home])
     return (
-        <section className="relative w-full h-[550px] bg-banner py-[50px]">
+        <section className="relative w-full h-fit bg-banner py-[50px] md:h-[550px]">
             <div className="snow"></div>
-            <div className="w-9/12 m-auto grid grid-cols-2 gap-4">
+            <div className="w-11/12 m-auto grid grid-cols-1 gap-4 md:w-9/12 md:grid-cols-2">
                 <div className="col-span-1 grid grid-cols-2 gap-4">
                     <div className="col-span-1 grid grid-rows-2 gap-6">
                         <div className="shadow-secondary h-full col-span-1 rounded w-11/12 bg-cover bg-center" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(firstImg.value), listLangs)})` }} ref={(el: any) => el && divs.current.push(el)}>

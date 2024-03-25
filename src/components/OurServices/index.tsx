@@ -34,114 +34,6 @@ const OurServices = () => {
         updated_at: '',
         value: '{}'
     })
-    const [firstTitle, setFirstTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [firstDesc, setFirstDesc] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [secondTitle, setSecondTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [secondDesc, setSecondDesc] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [thirdTitle, setThirdTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [thirdDesc, setThirdDesc] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [fourthTitle, setFourthTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [fourthDesc, setFourthDesc] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [fifthTitle, setFifthTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [fifthDesc, setFifthDesc] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [sixthTitle, setSixthTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [sixthDesc, setSixthDesc] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
     const divs = useRef<any[]>([]);
     CustomHook(divs);
     useEffect(() => {
@@ -168,138 +60,6 @@ const OurServices = () => {
                 updated_at: '',
                 value: '{}'
             })
-            //first title
-            const findFirstTitle = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_FIRST_TITLE);
-            setFirstTitle(findFirstTitle ? findFirstTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //first description
-            const findFirstDesc = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_FIRST_DESC);
-            setFirstDesc(findFirstDesc ? findFirstDesc : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //second description
-            const findSecondTitle = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_SECOND_TITLE);
-            setSecondTitle(findSecondTitle ? findSecondTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //second description
-            const findSecondDesc = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_SECOND_DESC);
-            setSecondDesc(findSecondDesc ? findSecondDesc : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //third description
-            const findThirdTitle = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_THIRD_TITLE);
-            setThirdTitle(findThirdTitle ? findThirdTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //third description
-            const findThirdDesc = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_THIRD_DESC);
-            setThirdDesc(findThirdDesc ? findThirdDesc : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //fourth description
-            const findFourthTitle = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_FOURTH_TITLE);
-            setFourthTitle(findFourthTitle ? findFourthTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //fourth description
-            const findFourthDesc = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_FOURTH_DESC);
-            setFourthDesc(findFourthDesc ? findFourthDesc : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //fifth description
-            const findFifthTitle = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_FIFTH_TITLE);
-            setFifthTitle(findFifthTitle ? findFifthTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //fifth description
-            const findFifthDesc = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_FIFTH_DESC);
-            setFifthDesc(findFifthDesc ? findFifthDesc : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //sixth description
-            const findSixthTitle = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_SIXTH_TITLE);
-            setSixthTitle(findSixthTitle ? findSixthTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //sixth description
-            const findSixthDesc = home.find(h => h.key === HOME_CONSTANTS.OUR_SERVICES_SIXTH_DESC);
-            setSixthDesc(findSixthDesc ? findSixthDesc : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
         }
     }, [home])
     const swiperParams = {
@@ -311,7 +71,7 @@ const OurServices = () => {
                 slidesPerView: 6,
             },
             768: {
-                slidesPerView: 4,
+                slidesPerView: 3,
             },
             320: {
                 slidesPerView: 2,
@@ -321,7 +81,7 @@ const OurServices = () => {
     return (
         <section className="w-full p-6">
             <div className="w-11/12 m-auto">
-                <div className="w-1/2 flex flex-col items-center m-auto">
+                <div className="w-full flex flex-col items-center m-auto md:w-1/2">
                     <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>

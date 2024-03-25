@@ -18,7 +18,6 @@ const Teams = () => {
     const { home } = useAppSelector(state => state.home);
     const { language, listLangs } = useAppSelector(state => state.lang);
     const { team } = useAppSelector(state => state.team);
-    const [imgsKey] = useState<string[]>([HOME_CONSTANTS.TEAM_FIRST_IMG, HOME_CONSTANTS.TEAM_SECOND_IMG, HOME_CONSTANTS.TEAM_THIRD_IMG, HOME_CONSTANTS.TEAM_FOURTH_IMG])
     const [tag, setTag] = useState<Home>({
         id: 0,
         created_at: '',
@@ -46,7 +45,6 @@ const Teams = () => {
         updated_at: '',
         value: '{}'
     })
-    const [images, setImages] = useState<Home[]>([]);
     const divs = useRef<any[]>([]);
     CustomHook(divs);
     useEffect(() => {
@@ -84,13 +82,6 @@ const Teams = () => {
                 updated_at: '',
                 value: '{}'
             })
-            //images
-            let tempArr: Home[] = [];
-            imgsKey.forEach(i => {
-                const findImg: any = home.find(h => h.key === i);
-                tempArr.push(findImg);
-            })
-            setImages(tempArr)
         }
     }, [home])
     const swiperParams = {
@@ -102,7 +93,7 @@ const Teams = () => {
                 slidesPerView: 4,
             },
             768: {
-                slidesPerView: 4,
+                slidesPerView: 3,
             },
             320: {
                 slidesPerView: 2,
@@ -112,7 +103,7 @@ const Teams = () => {
     return (
         <section className="w-full p-6">
             <div className="w-11/12 m-auto">
-                <div className="w-1/2 flex flex-col items-center m-auto">
+                <div className="w-full flex flex-col items-center m-auto md:w-1/2">
                     <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>

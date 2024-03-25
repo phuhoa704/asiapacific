@@ -280,17 +280,17 @@ const Footer = () => {
         <>
             <div className="w-full bg-banner">
                 <div className="w-10/12 py-[5%] m-auto">
-                    <div className="grid grid-cols-5 gap-6">
-                        <div className="col-span-2">
+                    <div className="grid grid-cols-4 gap-6 md:grid-cols-4 lg:grid-cols-5">
+                        <div className="col-span-4 md:col-span-2 lg:col-span-2">
                             <p className="text-[11px] text-white text-left mt-4 mb-4">
                                 {translate(language, JSON.parse(descr.value), listLangs)}
                             </p>
-                            <div className="flex rounded-full bg-[rgba(255,255,255,0.2)] h-10 w-9/12">
+                            <div className="flex rounded-full bg-[rgba(255,255,255,0.2)] h-10 w-full md:11/12 lg:w-9/12">
                                 <input type="text" className="footer-input border-none bg-transparent w-9/12 h-full text-white pl-2 focus:outline-none focus:border-none" placeholder="Email...." />
                                 <button className="h-full rounded-full w-3/12 bg-[#fdcd2e] text-[#cf2757]">Subcribe</button>
                             </div>
                         </div>
-                        <div className="col-span-1">
+                        <div className="col-span-4 md:col-span-2 lg:col-span-1">
                             <div className="text-white font-medium">{translate(language, JSON.parse(title.value), listLangs)}</div>
                             <div className="h-0.5 w-3/12 bg-[#fdcd2e] rounded my-2.5"></div>
                             <div className="flex flex-col gap-5">
@@ -324,7 +324,7 @@ const Footer = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-1">
+                        <div className="col-span-2 md:col-span-2 lg:col-span-1">
                             <div className="text-white font-medium">{translate(language, JSON.parse(title2.value), listLangs)}</div>
                             <div className="h-0.5 w-3/12 bg-[#fdcd2e] rounded my-2.5"></div>
                             <div className="flex flex-col gap-5">
@@ -333,7 +333,7 @@ const Footer = () => {
                                 ))}
                             </div>
                         </div>
-                        <div className="col-span-1">
+                        <div className="col-span-2 md:col-span-2 lg:col-span-1">
                             <div className="text-white font-medium">{translate(language, JSON.parse(title3.value), listLangs)}</div>
                             <div className="h-0.5 w-3/12 bg-[#fdcd2e] rounded my-2.5"></div>
                             <div className="flex flex-col gap-5">
@@ -346,7 +346,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="w-full bg-[#161b7f]">
-                <div className="w-10/12 py-5 m-auto flex justify-between">
+                <div className="w-11/12 md:w-9/12 py-5 m-auto flex justify-between flex-col md:flex-row gap-4 md:gap-0">
                     <div className="text-white">
                         Copyright &#169; 2023 <span className="text-[#fdcd2e]">APB</span> | All Right Reversed
                     </div>

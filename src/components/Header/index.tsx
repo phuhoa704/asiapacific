@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import logo from '../../assets/logo.png';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { ASSETS_API } from '../../configs/apis.config';
 import { changeLang } from '../../redux/actions/Langs';
 import { translate } from '../../helpers/translator';
-import { Home, SocialMedia } from '../../props';
+import { Home } from '../../props';
 import { HEADER_CONSTANTS } from '../../configs/constants.config';
 import { ROUTES } from '../../configs/routes.config';
 
@@ -106,6 +105,7 @@ const Header = () => {
         updated_at: '',
         value: ''
     })
+    const [showNavbar, setShowNavbar] = useState<boolean>(false);
     useEffect(() => {
         if (header.length > 0) {
             //email
@@ -155,86 +155,88 @@ const Header = () => {
         }
     }, [header])
     useEffect(() => {
-        if(socialMedia.length > 0) {
+        if (socialMedia.length > 0) {
             //fb
             const fb = socialMedia.find(s => s.key === 'Facebook');
-            if(fb) {
+            if (fb) {
                 setFb(fb)
             }
             //ins
             const ins = socialMedia.find(s => s.key === 'Instagram');
-            if(ins) {
+            if (ins) {
                 setIns(ins)
             }
             //tw
             const tw = socialMedia.find(s => s.key === 'Twitter');
-            if(tw) {
+            if (tw) {
                 setTw(tw)
             }
             //linkedin
             const linked = socialMedia.find(s => s.key === 'LinkedIn');
-            if(linked) {
+            if (linked) {
                 setLinkedIn(linked)
             }
         }
-    },[socialMedia])
+    }, [socialMedia])
     return (
-        <div className="w-10/12 m-auto">
-            <div className="flex justify-between bg-[#223cd1] text-sm px-6 py-2 rounded-b-[30px] w-10/12 m-auto">
-                <div className="flex">
+        <div className="w-10/12 m-auto max-sm:w-full lg:w-11/12 xl:w-10/12">
+            <div className="flex justify-between bg-[#223cd1] text-sm px-6 py-2 rounded-b-[30px] w-10/12 m-auto max-sm:w-full max-sm:text-xs sm:w-11/12 sm:text-xs lg:w-10/12">
+                <div className="flex max-sm:flex-col max-sm:items-start sm:flex-col sm:items-start lg:flex-row">
                     <div className="flex items-center">
                         <i className="fa-solid fa-envelope text-[#f1c853]"></i>
                         <span className="text-white ml-2">{translate(language, JSON.parse(email.value), listLangs)}</span>
                     </div>
-                    <div className="flex items-center ml-2">
+                    <div className="flex items-center ml-2 max-sm:ml-0 sm:ml-0 lg:ml-2">
                         <i className="fa-solid fa-location-dot text-[#f1c853]"></i>
                         <span className="text-white ml-2">{translate(language, JSON.parse(address.value), listLangs)}</span>
                     </div>
                 </div>
-                <div className="flex items-center text-white">
-                    <span className="mr-5">{translate(language, JSON.parse(time.value), listLangs)}</span>
-                    <a href={fb.value} target='_blank'>
-                        <i className="fa-brands fa-facebook-f mr-2.5 cursor-pointer"></i>
-                    </a>
-                    <a href={ins.value} target='_blank'>
-                        <i className="fa-brands fa-instagram mr-2.5 cursor-pointer"></i>
-                    </a>
-                    <a href={tw.value} target='_blank'>
-                        <i className="fa-brands fa-twitter mr-2.5 cursor-pointer"></i>
-                    </a>
-                    <a href={linkedIn.value} target='_blank'>
-                        <i className="fa-brands fa-linkedin-in mr-2.5 cursor-pointer"></i>
-                    </a>
+                <div className="flex flex-col items-end text-white sm:flex-col sm:items-end lg:flex-row lg:items-center">
+                    <span className="mr-0 lg:mr-2 max-sm:text-right max-sm:break-all max-sm:whitespace-pre">{translate(language, JSON.parse(time.value), listLangs)}</span>
+                    <div>
+                        <a href={fb.value} target='_blank'>
+                            <i className="fa-brands fa-facebook-f mr-2.5 cursor-pointer"></i>
+                        </a>
+                        <a href={ins.value} target='_blank'>
+                            <i className="fa-brands fa-instagram mr-2.5 cursor-pointer"></i>
+                        </a>
+                        <a href={tw.value} target='_blank'>
+                            <i className="fa-brands fa-twitter mr-2.5 cursor-pointer"></i>
+                        </a>
+                        <a href={linkedIn.value} target='_blank'>
+                            <i className="fa-brands fa-linkedin-in mr-2.5 cursor-pointer"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div className="flex justify-between py-2">
+            <div className="flex justify-between py-2 px-1.5">
                 <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
                     <div className='w-[70px]'>
                         <img src={`${ASSETS_API}${logo.value}`} alt="" className='w-full' />
                     </div>
                     <div className="flex flex-col items-center">
-                        <span className='font-bold tracking-[7px]'>ASIA PACIFIC</span>
+                        <span className='font-bold tracking-[7px] text-center'>ASIA PACIFIC</span>
                         <span className='text-sm tracking-[4px]'>BUSINESS</span>
                     </div>
                 </div>
-                <div className="flex">
-                    <div className="flex items-center mr-4 text-sm">
+                <div className="flex items-center">
+                    <div className="items-center mr-4 text-sm hidden lg:flex">
                         {navLinks.map(n => (
-                            <NavLink key={n.id} to={n.href} className={(pathname === n.href) ? 'text-[#cf2757] mr-3 font-medium' : 'text-[#2328ba] mr-3 font-medium'}>
+                            <NavLink key={n.id} to={n.href} className={(pathname === n.href) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm'}>
                                 {n.name}
                                 {(n.children.length > 0) && <i className="fa-solid fa-chevron-down text-xs ml-1"></i>}
                             </NavLink>
                         ))}
                     </div>
-                    <div className="flex items-center mr-4">
-                        <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5' onClick={() => navigate(ROUTES.SERVICES)}>{translate(language, JSON.parse(button.value), listLangs)}</button>
+                    <div className="flex items-center mr-4 hidden lg:block">
+                        <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5 xl:text-sm lg:text-xs' onClick={() => navigate(ROUTES.SERVICES)}>{translate(language, JSON.parse(button.value), listLangs)}</button>
                     </div>
-                    <div className="group flex items-center relative">
-                        <button className="text-[#fdcd2e] bg-[#f5e2d7] flex items-center px-2.5 py-2 rounded">
+                    <div className="group flex items-end relative lg:items-center">
+                        <button className="text-[#fdcd2e] bg-[#f5e2d7] flex items-center px-2.5 py-2 rounded mr-2 sm:mr-0">
                             <i className="fa-solid fa-globe"></i>
-                            <img src={`${ASSETS_API}${currentLang.image}`} alt="" className='w-[25px] ml-2' />
+                            <img src={`${ASSETS_API}${currentLang.image}`} alt="" className='w-[25px] lg:w-[20px] xl:w-[25px] ml-2' />
                         </button>
-                        <ul className="absolute hidden top-14 text-gray-700 pt-1 w-40 group-hover:block">
+                        <ul className="absolute hidden top-11 right-0 z-10 text-gray-700 pt-1 w-40 group-hover:block">
                             {listLangs.map(l => (
                                 <li className="" key={l.key}>
                                     <div className="cursor-pointer bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap flex items-center" onClick={() => {
@@ -245,7 +247,19 @@ const Header = () => {
                             ))}
                         </ul>
                     </div>
+                    <div className="ml-2 lg:hidden">
+                        <button className='bg-[#fdcd2e] text-[#cf2757] rounded py-2.5 px-3' onClick={() => setShowNavbar(!showNavbar)}><i className="fa-solid fa-align-justify"></i></button>
+                    </div>
                 </div>
+            </div>
+            <div className={`absolute z-10 left-0 flex-col gap-4 ${showNavbar ? 'flex' : 'hidden'} bg-white w-full py-2 px-4 shadow-lg`}>
+                <NavLink to={ROUTES.SERVICES} onClick={() => setShowNavbar(false)} className='text-[#2328ba] font-medium'>{translate(language, JSON.parse(button.value), listLangs)}</NavLink>
+                {navLinks.map(n => (
+                    <NavLink key={n.id} to={n.href} onClick={() => setShowNavbar(false)} className={(pathname === n.href) ? 'text-[#cf2757] mr-3 font-medium' : 'text-[#2328ba] mr-3 font-medium'}>
+                        {n.name}
+                        {(n.children.length > 0) && <i className="fa-solid fa-chevron-down text-xs ml-1"></i>}
+                    </NavLink>
+                ))}
             </div>
         </div>
     );

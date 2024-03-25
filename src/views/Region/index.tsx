@@ -43,11 +43,11 @@ const RegionPage = () => {
         <div>
             <HeaderBreadscrumb page="region" tab="region"/>
             <div className="w-full">
-                <div className="w-8/12 m-auto py-12">
+                <div className="w-11/12 lg:w-8/12 m-auto py-12">
                     <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         asia pacific business consulting and immigration services co., ltd.
                     </div>
-                    <div className="grid grid-cols-2 gap-4 py-8">
+                    <div className="grid grid-cols-1 gap-4 py-8 md:grid-cols-2">
                         <div className="col-span-1">
                             <p className="text-[#ae73db] text-3xl font-semibold mb-4 capitalize" ref={(el: any) => el && divs.current.push(el)}>Business network</p>
                         </div>
@@ -57,8 +57,8 @@ const RegionPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex gap-8">
-                        <div className="w-9/12 grid grid-cols-2 gap-8">
+                    <div className="flex flex-col lg:flex-row gap-8">
+                        <div className="w-full lg:w-9/12 grid grid-cols-2 gap-8">
                             <div className="col-span-1" ref={(el: any) => el && divs.current.push(el)}>
                                 <div className="w-full h-[350px] bg-center bg-cover rounded-lg shadow-primary transition-all" style={{ backgroundImage: `url(${ASSETS_API}${active.image})` }}>
                                 </div>
@@ -71,13 +71,13 @@ const RegionPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-3/12 flex">
+                        <div className="w-full lg:w-3/12 flex flex-col lg:flex-row">
                             {regions.filter(f => f.id !== active.id).map(r => (
-                                <div className="h-full border-l px-4 flex flex-col justify-between" key={r.id} ref={(el: any) => el && divs.current.push(el)}>
+                                <div className="h-full border-b lg:border-l lg:border-b-0 px-4 flex mb-2 lg:mb-0 flex-row lg:flex-col justify-between" key={r.id} ref={(el: any) => el && divs.current.push(el)}>
                                     <button className="text-white bg-[#ae73db] flex justify-center items-center p-2.5 rounded shadow-lg" onClick={() => setActive(r)}>
-                                        <i className="fa-solid fa-arrow-left"></i>
+                                        <i className="fa-solid fa-arrow-up md:fa-arrow-left"></i>
                                     </button>
-                                    <span className="uppercase text-lg text-[#cf2757] orientation-mixed writing-mode-vertical transition-all">{r.name}</span>
+                                    <span className="uppercase text-lg text-[#cf2757] writing-mode-horizontal lg:orientation-mixed lg:writing-mode-vertical transition-all">{r.name}</span>
                                 </div>
                             ))}
                         </div>

@@ -139,9 +139,9 @@ const ImmigrationServices = () => {
     const divs = useRef<any[]>([]);
     CustomHook(divs);
     return (
-        <section className="w-full h-[550px] py-20">
-            <div className="w-9/12 m-auto grid grid-cols-2 gap-6">
-                <div className="col-span-1">
+        <section className="w-full py-16">
+            <div className="w-11/12 m-auto grid grid-cols-2 gap-6 md:w-9/12 lg:w-11/12">
+                <div className="col-span-2 lg:col-span-1">
                     <div className="grid grid-cols-3 h-full" ref={(el: any) => el && divs.current.push(el)}>
                         <div className="col-span-2 pt-[50px]">
                             <div className="shadow-secondary h-[300px] bg-cover bg-center rounded-tl-[48px] rounded-br-[48px] border border-4 border-white w-9/12 m-auto" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(leftImg.value), listLangs)})`}}>
@@ -159,7 +159,7 @@ const ImmigrationServices = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-span-1 pl-[10%]">
+                <div className="col-span-2 pl-0 lg:pl-[10%] lg:col-span-1">
                     <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>

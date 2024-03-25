@@ -45,60 +45,6 @@ const Mission = () => {
         updated_at: '',
         value: '{}'
     })
-    const [firstImg, setFirstImg] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [firstTitle, setFirstTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [secondImg, setSecondImg] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [secondTitle, setSecondTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [thirdImg, setThirdImg] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
-    const [thirdTitle, setThirdTitle] = useState<Home>({
-        id: 0,
-        created_at: '',
-        image_desc: '',
-        key: '',
-        type: 1,
-        updated_at: '',
-        value: '{}'
-    })
     const divs = useRef<any[]>([]);
     const [hover, setHover] = useState<number>(1);
     const { mission } = useAppSelector(state => state.mission);
@@ -138,72 +84,6 @@ const Mission = () => {
                 updated_at: '',
                 value: '{}'
             })
-            //first image
-            const findFirstImg = home.find(h => h.key === HOME_CONSTANTS.MISSION_FIRST_IMG);
-            setFirstImg(findFirstImg ? findFirstImg : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //first title
-            const findFirstTitle = home.find(h => h.key === HOME_CONSTANTS.MISSION_FIRST_TITLE);
-            setFirstTitle(findFirstTitle ? findFirstTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //second image
-            const findSecondImg = home.find(h => h.key === HOME_CONSTANTS.MISSION_SECOND_IMG);
-            setSecondImg(findSecondImg ? findSecondImg : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //second title
-            const findSecondTitle = home.find(h => h.key === HOME_CONSTANTS.MISSION_SECOND_TITLE);
-            setSecondTitle(findSecondTitle ? findSecondTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //third image
-            const findThirdImg = home.find(h => h.key === HOME_CONSTANTS.MISSION_THIRD_IMG);
-            setThirdImg(findThirdImg ? findThirdImg : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
-            //third title
-            const findThirdTitle = home.find(h => h.key === HOME_CONSTANTS.MISSION_THIRD_TITLE);
-            setThirdTitle(findThirdTitle ? findThirdTitle : {
-                id: 0,
-                created_at: '',
-                image_desc: '',
-                key: '',
-                type: 1,
-                updated_at: '',
-                value: '{}'
-            })
         }
     }, [home])
     const swiperParams = {
@@ -215,15 +95,15 @@ const Mission = () => {
                 slidesPerView: 3,
             },
             768: {
-                slidesPerView: 3,
+                slidesPerView: 2,
             },
             320: {
-                slidesPerView: 3,
+                slidesPerView: 1,
             },
         },
     };
     return (
-        <section className="w-full p-6">
+        <section className="w-full p-2 md:py-6">
             <div className="w-11/12 m-auto">
                 <div className="w-1/2 flex flex-col items-center m-auto">
                     <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>

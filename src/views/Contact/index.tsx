@@ -273,13 +273,13 @@ const ContactPage = () => {
         <div>
             <HeaderBreadscrumb page={translate(language, JSON.parse(breadscrum.value), listLangs)} tab={translate(language, JSON.parse(breadscrum.value), listLangs)} />
             <div className="w-full">
-                <div className="w-8/12 m-auto py-12">
+                <div className="w-11/12 lg:w-8/12 m-auto py-12">
                     <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>
                     <p className="text-[#ae73db] text-3xl font-semibold mb-4" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(title.value), listLangs)}</p>
                     <div className="grid grid-cols-3 gap-4">
-                        <div className="col-span-1">
+                        <div className="col-span-3 md:col-span-1">
                             <div className="text-xs text-left mb-4" ref={(el: any) => el && divs.current.push(el)}>
                                 {translate(language, JSON.parse(descr.value), listLangs)}
                             </div>
@@ -299,7 +299,7 @@ const ContactPage = () => {
                                 ))}
                             </div>
                         </div>
-                        <div className="col-span-2">
+                        <div className="col-span-3 md:col-span-2">
                             <form onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-2 gap-4" ref={(el: any) => el && divs.current.push(el)}>
                                     <div className="col-span-1">
@@ -325,7 +325,7 @@ const ContactPage = () => {
                 </div>
             </div>
             <div className="w-full mb-4">
-                <div className="w-8/12 m-auto grid grid-cols-4 h-[150px] border-[#ae73db] border" ref={(el: any) => el && divs.current.push(el)}>
+                <div className="w-11/12 md:w-8/12 m-auto grid grid-cols-4 h-[150px] border-[#ae73db] border" ref={(el: any) => el && divs.current.push(el)}>
                     {images.map(i => (
                         <div key={i.id} className="col-span-1 bg-center bg-cover border-[#ae73db] border relative" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(i.value), listLangs)})` }}>
                             <div className="w-full bg-bottom-gradient h-1/3 absolute bottom-0"></div>
