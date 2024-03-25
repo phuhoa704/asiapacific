@@ -252,7 +252,7 @@ function ProfessionalKnowledge() {
                         </div>
                     </div>
                 </div>
-                <div className="col-span-1 text-left pl-10">
+                <div className="col-span-1 text-left pl-0 lg:pl-10">
                     <div className="text-[#223cd1] bg-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>

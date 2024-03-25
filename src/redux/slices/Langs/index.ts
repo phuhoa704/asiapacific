@@ -18,7 +18,9 @@ const initialState: LangState = {
         lang: '',
         name: '',
         descr_key: '',
-        name_key: ''
+        name_key: '',
+        content_key: '',
+        title_key: ''
     }
 }
 

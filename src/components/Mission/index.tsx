@@ -105,7 +105,7 @@ const Mission = () => {
     return (
         <section className="w-full p-2 md:py-6">
             <div className="w-11/12 m-auto">
-                <div className="w-1/2 flex flex-col items-center m-auto">
+                <div className="w-10/12 flex flex-col items-center m-auto lg:w-1/2">
                     <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs" ref={(el: any) => el && divs.current.push(el)}>
                         {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>
