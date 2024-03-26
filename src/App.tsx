@@ -13,19 +13,14 @@ import { useAppDispatch, useAppSelector } from "./redux/hook";
 import { useEffect } from "react";
 import { getFooterContent, getHeaderContent, getHomeContent, getLogoContent } from "./redux/actions/Home";
 import { changeLang, getListLang } from "./redux/actions/Langs";
-import ImmigrationServices from "./views/ImmigrationServices";
-import TaxServices from "./views/TaxServices";
-import ConsltancyService from "./views/ConsltancyService";
 import NewsDetail from "./views/NewsDetail";
 import { getMissionContent } from "./redux/actions/Misson";
 import { getServiceContent, getServices } from "./redux/actions/Service";
 import { getTeamContent } from "./redux/actions/Team";
-import { getRegionContent, getRegions } from "./redux/actions/Region";
-import { getNewsContent, getNewsList } from "./redux/actions/News";
+import { getRegions } from "./redux/actions/Region";
 import { getContactContent } from "./redux/actions/Contact";
 import { LANGUAGE } from "./configs/constants.config";
 import { getSocialMedia } from "./redux/actions/SocialMedia";
-import { getAboutSteps } from "./redux/actions/About";
 import ServiceDetail from "./views/ServiceDetail";
 
 function App() {
@@ -39,14 +34,11 @@ function App() {
       dispatch(getTeamContent([]));
       dispatch(getHeaderContent({}));
       dispatch(getFooterContent({}));
-      dispatch(getRegionContent([]));
-      dispatch(getNewsContent([]));
+      // dispatch(getRegionContent([]));
       dispatch(getContactContent([]));
       dispatch(getRegions([]));
-      dispatch(getNewsList([]));
       dispatch(getSocialMedia([]));
       dispatch(getLogoContent([]));
-      dispatch(getAboutSteps([]));
       dispatch(getServices([]))
   }, [])
   useEffect(() => {

@@ -96,7 +96,7 @@ const Teams = () => {
                 slidesPerView: 3,
             },
             320: {
-                slidesPerView: 2,
+                slidesPerView: 1,
             },
         },
     };

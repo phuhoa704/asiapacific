@@ -132,5 +132,11 @@ export const ABOUT_CONSTANTS = {
     IMAGE: 'aboutus_05'
 }
 
+export const NEWS_CONSTANTS = {
+    BREADSCRUM: 'news_01',
+    TAG: 'news_02',
+    TITLE: 'news_03'
+}
+
 /* ////////////LANGUAGE//////////////// */
 export const LANGUAGE = 'LANG'

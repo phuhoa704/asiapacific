@@ -6,7 +6,7 @@ import VerticalSteps from "../../components/VerticalSteps";
 import CustomHook from "../../utils/CustomHook";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { translate, translateDescr, translateTitle } from "../../helpers/translator";
-import { getAboutContent } from "../../redux/actions/About";
+import { getAboutContent, getAboutSteps } from "../../redux/actions/About";
 import { ABOUT_CONSTANTS } from "../../configs/constants.config";
 import { Home } from "../../props";
 import { ASSETS_API } from "../../configs/apis.config";
@@ -64,6 +64,7 @@ const About = () => {
     CustomHook(divs);
     useEffect(() => {
         dispatch(getAboutContent([ABOUT_CONSTANTS.BREADSCRUM, ABOUT_CONSTANTS.DESCRIPTION, ABOUT_CONSTANTS.IMAGE, ABOUT_CONSTANTS.TAG, ABOUT_CONSTANTS.TITLE]))
+        dispatch(getAboutSteps([]));
     }, [])
     useEffect(() => {
         if (about.length > 0) {

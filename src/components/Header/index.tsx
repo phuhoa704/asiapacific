@@ -211,12 +211,8 @@ const Header = () => {
             </div>
             <div className="flex justify-between py-2 px-1.5">
                 <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-                    <div className='w-[70px]'>
+                    <div className='w-full'>
                         <img src={`${ASSETS_API}${logo.value}`} alt="" className='w-full' />
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <span className='font-bold tracking-[7px] text-center'>ASIA PACIFIC</span>
-                        <span className='text-sm tracking-[4px]'>BUSINESS</span>
                     </div>
                 </div>
                 <div className="flex items-center">

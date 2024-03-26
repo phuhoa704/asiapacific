@@ -142,12 +142,12 @@ const ImmigrationServices = () => {
         <section className="w-full py-16">
             <div className="w-11/12 m-auto grid grid-cols-2 gap-6 md:w-9/12 lg:w-11/12">
                 <div className="col-span-2 lg:col-span-1">
-                    <div className="grid grid-cols-3 h-full">
-                        <div className="col-span-2 pt-[50px]">
-                            <div className="shadow-secondary h-[300px] bg-cover bg-center rounded-tl-[48px] rounded-br-[48px] border border-4 border-white w-9/12 m-auto" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(leftImg.value), listLangs)})`}}>
+                    <div className="grid grid-cols-5 md:grid-cols-3 h-full">
+                        <div className="col-span-3 md:col-span-2 pt-[10px] md:pt-10">
+                            <div className="shadow-secondary h-[300px] bg-cover bg-center rounded-tl-[48px] rounded-br-[48px] border border-4 border-white w-11/12 md:w-9/12 m-0 md:m-auto" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(leftImg.value), listLangs)})`}}>
                             </div>
                         </div>
-                        <div className="col-span-1 grid grid-rows-2 gap-2">
+                        <div className="col-span-2 md:col-span-1 grid grid-rows-2 gap-2">
                             <div className="shadow-secondary col-span-1 bg-cover bg-center rounded-tl-[48px] rounded-br-[48px] border border-4 border-white mb-4" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(topRightImg.value), listLangs)})`}}>
                             </div>
                             <div className="shadow-secondary col-span-1 bg-cover bg-center rounded-tr-[48px] rounded-bl-[48px] border border-4 border-white relative" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(botRightImg.value), listLangs)})`}}>

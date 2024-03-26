@@ -242,13 +242,13 @@ function ProfessionalKnowledge() {
             <div className="w-11/12 m-auto grid grid-cols-1 gap-4 md:w-9/12 md:grid-cols-2">
                 <div className="col-span-1 grid grid-cols-2 gap-4">
                     <div className="col-span-1 grid grid-rows-2 gap-6">
-                        <div className="shadow-secondary h-full col-span-1 rounded w-11/12 bg-cover bg-center" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(firstImg.value), listLangs)})` }} ref={(el: any) => el && divs.current.push(el)}>
+                        <div className="shadow-secondary h-full col-span-1 rounded w-full bg-cover bg-center lg:w-11/12" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(firstImg.value), listLangs)})` }} ref={(el: any) => el && divs.current.push(el)}>
                         </div>
-                        <div className="shadow-secondary h-full col-span-1 rounded w-11/12 bg-cover bg-center" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(secondImg.value), listLangs)})` }} ref={(el: any) => el && divs.current.push(el)}>
+                        <div className="shadow-secondary h-full col-span-1 rounded w-full bg-cover bg-center lg:w-11/12" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(secondImg.value), listLangs)})` }} ref={(el: any) => el && divs.current.push(el)}>
                         </div>
                     </div>
                     <div className="col-span-1">
-                        <div className="shadow-secondary h-[300px] mt-12 col-span-1 rounded w-10/12 bg-cover bg-center" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(thirdImg.value), listLangs)})` }} ref={(el: any) => el && divs.current.push(el)}>
+                        <div className="shadow-secondary h-[300px] mt-12 col-span-1 rounded w-full bg-cover bg-center lg:w-10/12" style={{ backgroundImage: `url(${ASSETS_API}${translate(language, JSON.parse(thirdImg.value), listLangs)})` }} ref={(el: any) => el && divs.current.push(el)}>
                         </div>
                     </div>
                 </div>
