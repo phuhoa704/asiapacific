@@ -15,13 +15,14 @@ import { getFooterContent, getHeaderContent, getHomeContent, getLogoContent } fr
 import { changeLang, getListLang } from "./redux/actions/Langs";
 import NewsDetail from "./views/NewsDetail";
 import { getMissionContent } from "./redux/actions/Misson";
-import { getServiceContent, getServices } from "./redux/actions/Service";
+import { getServices } from "./redux/actions/Service";
 import { getTeamContent } from "./redux/actions/Team";
 import { getRegions } from "./redux/actions/Region";
 import { getContactContent } from "./redux/actions/Contact";
 import { LANGUAGE } from "./configs/constants.config";
 import { getSocialMedia } from "./redux/actions/SocialMedia";
 import ServiceDetail from "./views/ServiceDetail";
+import ServiceChildDetail from "./views/ServiceChildDetail";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -30,11 +31,9 @@ function App() {
       dispatch(getHomeContent([]))
       dispatch(getListLang([]))
       dispatch(getMissionContent([]));
-      dispatch(getServiceContent([]));
       dispatch(getTeamContent([]));
       dispatch(getHeaderContent({}));
       dispatch(getFooterContent({}));
-      // dispatch(getRegionContent([]));
       dispatch(getContactContent([]));
       dispatch(getRegions([]));
       dispatch(getSocialMedia([]));
@@ -69,6 +68,7 @@ function App() {
         <Route path={ROUTES.REGION} element={<RegionPage />}/>
         <Route path={ROUTES.SERVICES} element={<Services />}/>
         <Route path={ROUTES.SERVICES_DETAIL} element={<ServiceDetail />}/>
+        <Route path={ROUTES.SERVICES_CHILDREN_DETAIL} element={<ServiceChildDetail />}/>
       </Routes>
       <Footer />
     </div>

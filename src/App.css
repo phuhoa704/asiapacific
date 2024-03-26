@@ -126,7 +126,8 @@ input.contact-input:-moz-placeholder {
     color: #ae73db;
 }
 
-select::-webkit-input-placeholder, select:-moz-placeholder {
+select::-webkit-input-placeholder,
+select:-moz-placeholder {
     color: #a2a9b8;
 }
 
@@ -195,7 +196,30 @@ select::-webkit-input-placeholder, select:-moz-placeholder {
 /* disable swiper arrow */
 .swiper-button-prev,
 .swiper-button-next {
-  display: none !important;
+    display: none !important;
+}
+
+.is-sticky {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);
+    background-color: #fff;
+    animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.is-sticky .top-header {
+    display: none;
+}
+
+.unstyle {
+    list-style: unset;
 }
 
 @keyframes flagAnimation {
@@ -235,5 +259,17 @@ select::-webkit-input-placeholder, select:-moz-placeholder {
 
     50% {
         transform: translate(0px, 0px);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

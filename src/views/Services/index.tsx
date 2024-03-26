@@ -45,7 +45,7 @@ const Services = () => {
                         <div className="text-[#ae73db] font-medium text-3xl text-center mb-4">Asia Pacific Could Provide The Service</div>
                     </div>
                     <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
-                        {services.map(s => (
+                        {services.filter(s => s.parent_id === 0).map(s => (
                             <SwiperSlide key={s.id}>
                                 <div className="w-10/12 m-auto">
                                     <ServiceCard item={s} />

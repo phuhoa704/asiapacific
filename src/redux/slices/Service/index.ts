@@ -7,6 +7,7 @@ export interface ServiceState {
     services: Services[]
     serviceDetail: Common
     servicesById: Services
+    serviceChildDetail: Services
 }
 
 
@@ -33,7 +34,25 @@ const initialState: ServiceState = {
         slug: '',
         updated_at: '',
         user_id: 0,
-        user_update: ''
+        user_update: '',
+        parent_id: 0
+    },
+    serviceChildDetail: {
+        content: '',
+        created_at: '',
+        deleted_at: '',
+        description: '',
+        id: 0,
+        image: '',
+        meta_desc: '',
+        meta_keyword: '',
+        meta_title: '',
+        name: '',
+        slug: '',
+        updated_at: '',
+        user_id: 0,
+        user_update: '',
+        parent_id: 0
     }
 }
 
@@ -52,9 +71,12 @@ export const ServiceSlice = createSlice({
         },
         saveServiceById: (state, action) => {
             state.servicesById = action.payload;
+        },
+        saveServiceChildDetail: (state, action) => {
+            state.serviceChildDetail = action.payload;
         }
     }
 })
 
-export const { saveService, saveServiceDetail, saveServices, saveServiceById } = ServiceSlice.actions;
+export const { saveService, saveServiceDetail, saveServices, saveServiceById, saveServiceChildDetail } = ServiceSlice.actions;
 export default ServiceSlice.reducer;

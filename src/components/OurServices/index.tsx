@@ -15,7 +15,7 @@ import { Navigation, Autoplay } from 'swiper/modules';
 const OurServices = () => {
     const { home } = useAppSelector(state => state.home);
     const { language, listLangs } = useAppSelector(state => state.lang);
-    const { service } = useAppSelector(state => state.service);
+    const { services } = useAppSelector(state => state.service);
     const [tag, setTag] = useState<Home>({
         id: 0,
         created_at: '',
@@ -89,7 +89,7 @@ const OurServices = () => {
                     <p className="text-[11px] text-[#1d1e1f] mt-4 mb-4 text-center" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(desc.value), listLangs)}</p>
                 </div>
                 <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
-                    {service.map(s => (
+                    {services.filter(s => s.parent_id === 0).map(s => (
                         <SwiperSlide key={s.id}>
                             <div className="group text-[#223cd1] w-11/12 m-auto" ref={(el: any) => el && divs.current.push(el)}>
                                 <div className="service-icon text-2xl w-10 h-10 group-hover:text-[#cf2757]">
