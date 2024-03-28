@@ -106,6 +106,7 @@ const Header = () => {
         value: ''
     })
     const [showNavbar, setShowNavbar] = useState<boolean>(false);
+    const [languageTab, setLanguageTab] = useState<boolean>(false);
     useEffect(() => {
         if (header.length > 0) {
             //email
@@ -240,12 +241,12 @@ const Header = () => {
                     <div className="flex items-center mr-4 hidden lg:block">
                         <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5 xl:text-sm lg:text-xs' onClick={() => navigate(ROUTES.SERVICES)}>{translate(language, JSON.parse(button.value), listLangs)}</button>
                     </div>
-                    <div className="group flex items-end relative lg:items-center">
+                    <div className="flex items-end relative lg:items-center cursor-pointer" onClick={() => setLanguageTab(!languageTab)}>
                         <button className="text-[#fdcd2e] bg-[#f5e2d7] flex items-center px-2.5 py-2 rounded mr-2 sm:mr-0">
                             <i className="fa-solid fa-globe"></i>
                             <img src={`${ASSETS_API}${currentLang.image}`} alt="" className='w-[25px] lg:w-[20px] xl:w-[25px] ml-2' />
                         </button>
-                        <ul className="absolute hidden top-11 right-0 z-10 text-gray-700 pt-1 w-40 group-hover:block">
+                        <ul className={`absolute top-11 right-0 z-10 text-gray-700 pt-1 w-40 ${languageTab ? 'block' : 'hidden'}`}>
                             {listLangs.map(l => (
                                 <li className="" key={l.key}>
                                     <div className="cursor-pointer bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap flex items-center" onClick={() => {
