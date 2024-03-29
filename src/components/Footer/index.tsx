@@ -8,7 +8,7 @@ import { ROUTES } from "../../configs/routes.config";
 
 const Footer = () => {
     const { listLangs, language } = useAppSelector(state => state.lang);
-    const { service } = useAppSelector(state => state.service);
+    const { services } = useAppSelector(state => state.service);
     const { footer } = useAppSelector(state => state.home);
     const { socialMedia } = useAppSelector(state => state.social);
     const [sales] = useState([
@@ -337,7 +337,7 @@ const Footer = () => {
                             <div className="text-white font-medium">{translate(language, JSON.parse(title3.value), listLangs)}</div>
                             <div className="h-0.5 w-3/12 bg-[#fdcd2e] rounded my-2.5"></div>
                             <div className="flex flex-col gap-5">
-                                {service.map(s => (
+                                {services.filter(s => s.parent_id === 0).map(s => (
                                     <NavLink key={s.id} to={ROUTES.SERVICES} className={'text-white text-xs'}>{translateName(language, JSON.parse(s.name), listLangs)}</NavLink>
                                 ))}
                             </div>

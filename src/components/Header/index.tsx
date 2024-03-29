@@ -7,6 +7,7 @@ import { translate } from '../../helpers/translator';
 import { Home } from '../../props';
 import { HEADER_CONSTANTS } from '../../configs/constants.config';
 import { ROUTES } from '../../configs/routes.config';
+import MegaMenu from '../MegaMenu';
 
 const Header = () => {
     const dispatch = useAppDispatch();
@@ -37,6 +38,7 @@ const Header = () => {
             id: 6, name: 'Contact', href: '/contact', children: []
         },
     ])
+    const [showMenu, setShowMenu] = useState<boolean>(false);
     const [email, setEmail] = useState<Home>({
         id: 0,
         created_at: '',
@@ -193,7 +195,7 @@ const Header = () => {
         }
     };
     return (
-        <div className="header w-10/12 m-auto max-sm:w-full lg:w-11/12 xl:w-10/12">
+        <div className="header w-10/12 m-auto max-sm:w-full lg:w-11/12 xl:w-10/12 relative">
             <div className="top-header flex justify-between bg-[#223cd1] text-sm px-6 py-2 rounded-b-[30px] w-10/12 m-auto max-sm:w-full max-sm:text-xs sm:w-11/12 sm:text-xs lg:w-10/12">
                 <div className="flex max-sm:flex-col max-sm:items-start sm:flex-col sm:items-start lg:flex-row">
                     <div className="flex items-center">
@@ -232,9 +234,13 @@ const Header = () => {
                 <div className="flex items-center">
                     <div className="items-center mr-4 text-sm hidden lg:flex">
                         {navLinks.map(n => (
-                            <NavLink key={n.id} to={n.href} className={(pathname === n.href) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm'}>
+                            <NavLink key={n.id} to={n.href} className={(pathname === n.href) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm'} onMouseEnter={() => {
+                                if(n.children.length > 0) {
+                                    setShowMenu(true)
+                                }
+                            }}>
                                 {n.name}
-                                {(n.children.length > 0) && <i className="fa-solid fa-chevron-down text-xs ml-1"></i>}
+                                {(n.children.length > 0) && <i className="fa-solid fa-chevron-down text-xs ml-1"></i>}                                
                             </NavLink>
                         ))}
                     </div>
@@ -271,6 +277,7 @@ const Header = () => {
                     </NavLink>
                 ))}
             </div>
+            <MegaMenu show={showMenu} mouseLeave={() => setShowMenu(false)}/>
         </div>
     );
 }

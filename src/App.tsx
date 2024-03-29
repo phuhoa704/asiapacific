@@ -23,6 +23,7 @@ import { LANGUAGE } from "./configs/constants.config";
 import { getSocialMedia } from "./redux/actions/SocialMedia";
 import ServiceDetail from "./views/ServiceDetail";
 import ServiceChildDetail from "./views/ServiceChildDetail";
+import MissionDetail from "./views/MissionDetail";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -57,7 +58,7 @@ function App() {
     }
   },[listLangs])
   return (
-    <div className='App poppins-regular text-sm'>
+    <div className='App text-sm'>
       <Header />
       <Routes>
         <Route path={ROUTES.HOME} element={<Homepage />}/>
@@ -69,6 +70,7 @@ function App() {
         <Route path={ROUTES.SERVICES} element={<Services />}/>
         <Route path={ROUTES.SERVICES_DETAIL} element={<ServiceDetail />}/>
         <Route path={ROUTES.SERVICES_CHILDREN_DETAIL} element={<ServiceChildDetail />}/>
+        <Route path={ROUTES.MISSION_DETAIL} element={<MissionDetail />}/>
       </Routes>
       <Footer />
     </div>

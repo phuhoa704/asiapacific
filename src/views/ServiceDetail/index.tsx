@@ -74,7 +74,7 @@ const ServiceDetail = () => {
                                         dispatch(saveServiceChildDetail(s));
                                         navigate(`${ROUTES.SERVICES}/${servicesById.slug}/${s.slug}`)
                                     }}>{translateName(language, JSON.parse(s.name), listLangs)}</div>
-                                    <p className="text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translateDescr(language, JSON.parse(s.description), listLangs)}</p>
+                                    <p className="tax-service-desc text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translateDescr(language, JSON.parse(s.description), listLangs)}</p>
                                 </div>
                             </SwiperSlide>
                         ))}

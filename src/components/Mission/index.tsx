@@ -3,7 +3,7 @@ import CustomHook from "../../utils/CustomHook";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { Home } from "../../props";
 import { HOME_CONSTANTS } from "../../configs/constants.config";
-import { translate, translateName } from "../../helpers/translator";
+import { translate, translateDescr, translateName } from "../../helpers/translator";
 import { ASSETS_API } from "../../configs/apis.config";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,9 +12,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 // import required modules
 import { Navigation, Autoplay } from 'swiper/modules';
-import { getMissionContentDetail } from "../../redux/actions/Misson";
+import { saveMissionDetail } from "../../redux/slices/Mission";
+import { useNavigate } from "react-router-dom";
 
 const Mission = () => {
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const { home } = useAppSelector(state => state.home);
     const { language, listLangs } = useAppSelector(state => state.lang);
@@ -117,17 +119,23 @@ const Mission = () => {
                 <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
                     {mission.map(m => (
                         <SwiperSlide key={m.id}>
-                            <div className={`group p-6 shadow-2xl rounded h-[300px] bg-cover bg-center flex flex-col justify-between transition-all w-8/12 m-auto`} onMouseEnter={() => setHover(m.id)} onMouseLeave={() => setHover(0)} ref={(el: any) => el && divs.current.push(el)}
-                                style={(hover === m.id) ? { backgroundColor: '#4287f5' } : { backgroundImage: `url(${ASSETS_API}${m.image})` }}
-                                onClick={() => dispatch(getMissionContentDetail(m.id))}
+                            <div className={`group shadow-2xl rounded h-[300px] bg-cover bg-center transition-all w-8/12 m-auto`} onMouseEnter={() => setHover(m.id)} onMouseLeave={() => setHover(0)} ref={(el: any) => el && divs.current.push(el)}
+                                style={{ backgroundImage: `url(${ASSETS_API}${m.image})` }}
+                                onClick={() => {
+                                    navigate(`mission/${m.slug}`)
+                                    dispatch(saveMissionDetail(m))
+                                }}
                             >
-                                <div className='rounded-full bg-white w-[50px] h-[50px] p-4 flex items-center justify-center text-[#223cd1] text-lg opacity-0 group-hover:opacity-100'>
-                                    <i className="fa-solid fa-chart-column"></i>
-                                </div>
-                                <div>
-                                    <div className='text-xl text-white font-semibold mb-2'>{translateName(language, JSON.parse(m.name), listLangs)}</div>
-                                    <button className='bg-white text-[#cf2757] rounded p-2.5 w-32'>View Details</button>
-                                </div>
+                                {(hover === m.id) && (<div className="w-full h-full p-6 flex flex-col justify-between rounded" style={{ backgroundColor: 'rgba(0,0,0,.4)' }}>
+                                    <div className='rounded-full bg-white w-[50px] h-[50px] p-4 flex items-center justify-center text-[#223cd1] text-lg opacity-0 group-hover:opacity-100'>
+                                        <i className="fa-solid fa-chart-column"></i>
+                                    </div>
+                                    <div>
+                                        <div className='text-xl text-white font-semibold mb-2'>{translateName(language, JSON.parse(m.name), listLangs)}</div>
+                                        <div className="tax-service-desc text-xs text-white mb-2">{translateDescr(language, JSON.parse(m.description), listLangs)}</div>
+                                        <button className='bg-white text-[#cf2757] rounded p-2.5 w-32'>View Details</button>
+                                    </div>
+                                </div>)}
                             </div>
                         </SwiperSlide>
                     ))}

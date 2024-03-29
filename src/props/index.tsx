@@ -90,6 +90,7 @@ export interface Common {
     name: string
     description: string
     slug: string
+    content: string
     image?: string
 }
 

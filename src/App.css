@@ -2,6 +2,10 @@
     width: 0px;
 }
 
+:root {
+    --swiper-theme-color: #cf2757 !important;
+}
+
 .poppins-thin {
     font-family: "Poppins", sans-serif;
     font-weight: 100;
@@ -189,14 +193,14 @@ select:-moz-placeholder {
 .tax-service-desc {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 4;
     overflow: hidden;
 }
 
 /* disable swiper arrow */
-.swiper-button-prev,
-.swiper-button-next {
-    display: none !important;
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 36px !important;
 }
 
 .is-sticky {
@@ -218,8 +222,18 @@ select:-moz-placeholder {
     display: none;
 }
 
+.is-sticky .fadeDown {
+    width: 83.333333%;
+    left: 0;
+    right: 0;
+}
+
 .unstyle {
     list-style: unset;
+}
+
+.fadeDown {
+    animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
 }
 
 @keyframes flagAnimation {

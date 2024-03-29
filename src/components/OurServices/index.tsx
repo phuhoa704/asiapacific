@@ -96,7 +96,7 @@ const OurServices = () => {
                                     <i className="fa-solid fa-list-check"></i>
                                 </div>
                                 <div className="text-sm font-medium group-hover:text-[#cf2757] cursor-default">{translateName(language, JSON.parse(s.name), listLangs)}</div>
-                                <p className="text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translateDescr(language, JSON.parse(s.description), listLangs)}</p>
+                                <p className="tax-service-desc text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translateDescr(language, JSON.parse(s.description), listLangs)}</p>
                             </div>
                         </SwiperSlide>
                     ))}

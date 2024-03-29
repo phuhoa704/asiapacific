@@ -7,5 +7,6 @@ export const ROUTES = {
     REGION: '/region',
     SERVICES: '/services',
     SERVICES_DETAIL: 'services/:slug',
-    SERVICES_CHILDREN_DETAIL: 'services/:slug/:child_slug'
+    SERVICES_CHILDREN_DETAIL: 'services/:slug/:child_slug',
+    MISSION_DETAIL: 'mission/:slug'
 }
