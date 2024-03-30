@@ -1,10 +1,10 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import HeaderBreadscrumb from "../../components/HeaderBreadcrumb";
 import CustomHook from "../../utils/CustomHook";
 import ServiceCard from "../../components/ServiceCard";
 import ServiceForm from "../../components/ServiceForm";
 import RequestBanner from "../../components/RequestBanner";
-import { useAppSelector } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
@@ -12,10 +12,43 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 // import required modules
 import { Navigation, Autoplay } from 'swiper/modules';
+import { getServiceContent } from "../../redux/actions/Service";
+import { Home } from "../../props";
+import { SERVICE_CONSTANTS } from "../../configs/constants.config";
+import { translate } from "../../helpers/translator";
 
 const Services = () => {
-    const { services } = useAppSelector(state => state.service);
+    const dispatch = useAppDispatch();
+    const { services, setting } = useAppSelector(state => state.service);
+    const { language, listLangs } = useAppSelector(state => state.lang);
     const divs = useRef<any[]>([]);
+    const [breadscrum, setBreadscrum] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [tag, setTag] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [title, setTitle] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
     CustomHook(divs);
     const swiperParams = {
         navigation: true,
@@ -33,16 +66,56 @@ const Services = () => {
             },
         },
     };
+    useEffect(() => {
+        dispatch(getServiceContent([]))
+    }, [])
+    useEffect(() => {
+        if (setting.length > 0) {
+            //breadscrum
+            const findBread = setting.find(h => h.key === SERVICE_CONSTANTS.BREADSCRUM);
+            setBreadscrum(findBread ? findBread : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //tag
+            const findTag = setting.find(h => h.key === SERVICE_CONSTANTS.TAG);
+            setTag(findTag ? findTag : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //tag
+            const findTitle = setting.find(h => h.key === SERVICE_CONSTANTS.TITLE);
+            setTitle(findTitle ? findTitle : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+        }
+    }, [setting])
     return (
         <div>
-            <HeaderBreadscrumb page="services" tab="services" />
+            <HeaderBreadscrumb page={translate(language, JSON.parse(breadscrum.value), listLangs)} tab={translate(language, JSON.parse(breadscrum.value), listLangs)} />
             <div className="w-full">
                 <div className="w-8/12 m-auto py-12">
                     <div className="flex flex-col items-center m-auto">
                         <div className="bg-[#223cd1] text-white w-fit rounded uppercase px-2.5 py-1.5 mb-4 text-xs">
-                            asia pacific business consulting and immigration services co., ltd.
+                            {translate(language, JSON.parse(tag.value), listLangs)}
                         </div>
-                        <div className="text-[#ae73db] font-medium text-3xl text-center mb-4">Asia Pacific Could Provide The Service</div>
+                        <div className="text-[#ae73db] font-medium text-3xl text-center mb-4">{translate(language, JSON.parse(title.value), listLangs)}</div>
                     </div>
                     <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
                         {services.filter(s => s.parent_id === 0).map(s => (

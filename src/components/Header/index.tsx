@@ -5,17 +5,73 @@ import { ASSETS_API } from '../../configs/apis.config';
 import { changeLang } from '../../redux/actions/Langs';
 import { translate } from '../../helpers/translator';
 import { Home } from '../../props';
-import { HEADER_CONSTANTS } from '../../configs/constants.config';
+import { ABOUT_CONSTANTS, CONTACT_CONSTANTS, HEADER_CONSTANTS, HOME_CONSTANTS, NEWS_CONSTANTS, REGION_CONSTANTS, SERVICE_CONSTANTS } from '../../configs/constants.config';
 import { ROUTES } from '../../configs/routes.config';
 import MegaMenu from '../MegaMenu';
+import { getMenu } from '../../redux/actions/Home';
 
 const Header = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const { listLangs, currentLang, language } = useAppSelector(state => state.lang);
+    const { menu } = useAppSelector(state => state.home);
     const { header, logo } = useAppSelector(state => state.home);
     const { socialMedia } = useAppSelector(state => state.social);
+    const [home, setHome] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [service, setService] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [about, setAbout] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [region, setRegion] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [news, setNews] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [contact, setContact] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
     const [navLinks] = useState([
         {
             id: 1, name: 'Home', href: '/', children: []
@@ -182,6 +238,79 @@ const Header = () => {
         }
     }, [socialMedia])
     useEffect(() => {
+        dispatch(getMenu([ABOUT_CONSTANTS.BREADSCRUM, NEWS_CONSTANTS.BREADSCRUM, REGION_CONSTANTS.BREADSCRUM, CONTACT_CONSTANTS.BREADCRUM, HOME_CONSTANTS.BREADSCRUM, SERVICE_CONSTANTS.BREADSCRUM]))
+    }, [])
+    useEffect(() => {
+        if (menu.length > 0) {
+            //about
+            const findAbout = menu.find(h => h.key === ABOUT_CONSTANTS.BREADSCRUM);
+            setAbout(findAbout ? findAbout : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //region
+            const findRegion = menu.find(h => h.key === REGION_CONSTANTS.BREADSCRUM);
+            setRegion(findRegion ? findRegion : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //about
+            const findNews = menu.find(h => h.key === NEWS_CONSTANTS.BREADSCRUM);
+            setNews(findNews ? findNews : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //contact
+            const findContact = menu.find(h => h.key === CONTACT_CONSTANTS.BREADCRUM);
+            setContact(findContact ? findContact : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //home
+            const findHome = menu.find(h => h.key === HOME_CONSTANTS.BREADSCRUM);
+            setHome(findHome ? findHome : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //service
+            const findService = menu.find(h => h.key === SERVICE_CONSTANTS.BREADSCRUM);
+            setService(findService ? findService : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+        }
+    }, [menu])
+    useEffect(() => {
         window.addEventListener('scroll', isSticky);
         return () => {
             window.removeEventListener('scroll', isSticky);
@@ -233,16 +362,25 @@ const Header = () => {
                 </div>
                 <div className="flex items-center">
                     <div className="items-center mr-4 text-sm hidden lg:flex">
-                        {navLinks.map(n => (
-                            <NavLink key={n.id} to={n.href} className={(pathname === n.href) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm'} onMouseEnter={() => {
-                                if(n.children.length > 0) {
-                                    setShowMenu(true)
-                                }
-                            }}>
-                                {n.name}
-                                {(n.children.length > 0) && <i className="fa-solid fa-chevron-down text-xs ml-1"></i>}                                
-                            </NavLink>
-                        ))}
+                        <NavLink to={ROUTES.HOME} className={(pathname === ROUTES.HOME) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm capitalize' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm capitalize'}>
+                            {translate(language, JSON.parse(home.value), listLangs)}
+                        </NavLink>
+                        <NavLink to={ROUTES.ABOUT} className={(pathname === ROUTES.ABOUT) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm capitalize' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm capitalize'}>
+                            {translate(language, JSON.parse(about.value), listLangs)}
+                        </NavLink>
+                        <NavLink to={ROUTES.SERVICES} className={(pathname === ROUTES.SERVICES) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm capitalize' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm capitalize'}>
+                            {translate(language, JSON.parse(service.value), listLangs)}
+                            <i className="fa-solid fa-chevron-down text-xs ml-1"></i>
+                        </NavLink>
+                        <NavLink to={ROUTES.REGION} className={(pathname === ROUTES.REGION) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm capitalize' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm capitalize'}>
+                            {translate(language, JSON.parse(region.value), listLangs)}
+                        </NavLink>
+                        <NavLink to={ROUTES.NEWS} className={(pathname === ROUTES.NEWS) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm capitalize' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm capitalize'}>
+                            {translate(language, JSON.parse(news.value), listLangs)}
+                        </NavLink>
+                        <NavLink to={ROUTES.CONTACT} className={(pathname === ROUTES.CONTACT) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm capitalize' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm capitalize'}>
+                            {translate(language, JSON.parse(contact.value), listLangs)}
+                        </NavLink>
                     </div>
                     <div className="flex items-center mr-4 hidden lg:block">
                         <button className='bg-[#fdcd2e] text-[#cf2757] rounded p-2.5 xl:text-sm lg:text-xs' onClick={() => navigate(ROUTES.SERVICES)}>{translate(language, JSON.parse(button.value), listLangs)}</button>
@@ -277,7 +415,7 @@ const Header = () => {
                     </NavLink>
                 ))}
             </div>
-            <MegaMenu show={showMenu} mouseLeave={() => setShowMenu(false)}/>
+            <MegaMenu show={showMenu} mouseLeave={() => setShowMenu(false)} />
         </div>
     );
 }

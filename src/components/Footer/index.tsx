@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../redux/hook";
 import { Home } from "../../props";
-import { FOOTER_CONSTANTS } from "../../configs/constants.config";
+import { ABOUT_CONSTANTS, CONTACT_CONSTANTS, FOOTER_CONSTANTS, NEWS_CONSTANTS, REGION_CONSTANTS, SERVICE_CONSTANTS } from "../../configs/constants.config";
 import { translate, translateName } from "../../helpers/translator";
 import { ROUTES } from "../../configs/routes.config";
 
 const Footer = () => {
     const { listLangs, language } = useAppSelector(state => state.lang);
     const { services } = useAppSelector(state => state.service);
-    const { footer } = useAppSelector(state => state.home);
+    const { footer, menu } = useAppSelector(state => state.home);
     const { socialMedia } = useAppSelector(state => state.social);
     const [sales] = useState([
         { id: 1, name: 'About Us', href: ROUTES.ABOUT },
@@ -121,6 +121,52 @@ const Footer = () => {
     const [ins, setIns] = useState<any>({})
     const [prt, setPrt] = useState<any>({})
     const [ytb, setYtb] = useState<any>({})
+
+    const [service, setService] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [about, setAbout] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [region, setRegion] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [news, setNews] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [contact, setContact] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
 
     useEffect(() => {
         if (footer.length > 0) {
@@ -276,6 +322,65 @@ const Footer = () => {
             }
         }
     }, [socialMedia])
+    useEffect(() => {
+        if (menu.length > 0) {
+            //about
+            const findAbout = menu.find(h => h.key === ABOUT_CONSTANTS.BREADSCRUM);
+            setAbout(findAbout ? findAbout : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //region
+            const findRegion = menu.find(h => h.key === REGION_CONSTANTS.BREADSCRUM);
+            setRegion(findRegion ? findRegion : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //about
+            const findNews = menu.find(h => h.key === NEWS_CONSTANTS.BREADSCRUM);
+            setNews(findNews ? findNews : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //contact
+            const findContact = menu.find(h => h.key === CONTACT_CONSTANTS.BREADCRUM);
+            setContact(findContact ? findContact : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //service
+            const findService = menu.find(h => h.key === SERVICE_CONSTANTS.BREADSCRUM);
+            setService(findService ? findService : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+        }
+    }, [menu])
     return (
         <>
             <div className="w-full bg-banner">
@@ -328,9 +433,11 @@ const Footer = () => {
                             <div className="text-white font-medium">{translate(language, JSON.parse(title2.value), listLangs)}</div>
                             <div className="h-0.5 w-3/12 bg-[#fdcd2e] rounded my-2.5"></div>
                             <div className="flex flex-col gap-5">
-                                {sales.map(s => (
-                                    <NavLink key={s.id} to={s.href} className={'text-white text-xs'}>{s.name}</NavLink>
-                                ))}
+                            <NavLink to={ROUTES.ABOUT} className={'text-white text-xs capitalize'}>{translate(language, JSON.parse(about.value), listLangs)}</NavLink>
+                            <NavLink to={ROUTES.SERVICES} className={'text-white text-xs capitalize'}>{translate(language, JSON.parse(service.value), listLangs)}</NavLink>
+                            <NavLink to={ROUTES.REGION} className={'text-white text-xs capitalize'}>{translate(language, JSON.parse(region.value), listLangs)}</NavLink>
+                            <NavLink to={ROUTES.NEWS} className={'text-white text-xs capitalize'}>{translate(language, JSON.parse(news.value), listLangs)}</NavLink>
+                            <NavLink to={ROUTES.CONTACT} className={'text-white text-xs capitalize'}>{translate(language, JSON.parse(contact.value), listLangs)}</NavLink>
                             </div>
                         </div>
                         <div className="col-span-2 md:col-span-2 lg:col-span-1">

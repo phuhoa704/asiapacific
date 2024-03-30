@@ -1,17 +1,56 @@
 import { useEffect, useRef, useState } from "react";
 import HeaderBreadscrumb from "../../components/HeaderBreadcrumb";
 import CustomHook from "../../utils/CustomHook";
-import { Region } from "../../props";
+import { Home, Region } from "../../props";
 import vietnam from '../../assets/vietnam.jpg';
 import RequestBanner from "../../components/RequestBanner";
-import { useAppSelector } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { ASSETS_API } from "../../configs/apis.config";
-import { translateDescr } from "../../helpers/translator";
+import { translate, translateDescr } from "../../helpers/translator";
+import { getRegionContent } from "../../redux/actions/Region";
+import { REGION_CONSTANTS } from "../../configs/constants.config";
 
 const RegionPage = () => {
-    const { regions } = useAppSelector(state => state.region);
+    const dispatch = useAppDispatch();
+    const { regions, region } = useAppSelector(state => state.region);
     const { language, listLangs } = useAppSelector(state => state.lang);
     const divs = useRef<any[]>([]);
+    const [breadscrum, setBreadscrum] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [tag, setTag] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [title, setTitle] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
+    const [descr, setDescr] = useState<Home>({
+        id: 0,
+        created_at: '',
+        image_desc: '',
+        key: '',
+        type: 1,
+        updated_at: '',
+        value: '{}'
+    })
     CustomHook(divs);
     const [active, setActive] = useState<Region>({
         id: 1,
@@ -33,25 +72,76 @@ const RegionPage = () => {
         updated_at: ''
     });
     useEffect(() => {
-        if(regions.length > 0) {
+        if (regions.length > 0) {
             setActive(regions[0])
         }
-    },[regions])
+    }, [regions])
+    useEffect(() => {
+        dispatch(getRegionContent([]))
+    }, [])
+    useEffect(() => {
+        if (region.length > 0) {
+            //breadscrum
+            const findBread = region.find(h => h.key === REGION_CONSTANTS.BREADSCRUM);
+            setBreadscrum(findBread ? findBread : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //tag
+            const findTag = region.find(h => h.key === REGION_CONSTANTS.TAG);
+            setTag(findTag ? findTag : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //title
+            const findTitle = region.find(h => h.key === REGION_CONSTANTS.TITLE);
+            setTitle(findTitle ? findTitle : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+            //description
+            const findDescr = region.find(h => h.key === REGION_CONSTANTS.DESCRIPTION);
+            setDescr(findDescr ? findDescr : {
+                id: 0,
+                created_at: '',
+                image_desc: '',
+                key: '',
+                type: 1,
+                updated_at: '',
+                value: '{}'
+            })
+        }
+    }, [region])
     return (
         <div>
-            <HeaderBreadscrumb page="region" tab="region"/>
+            <HeaderBreadscrumb page={translate(language, JSON.parse(breadscrum.value), listLangs)} tab={translate(language, JSON.parse(breadscrum.value), listLangs)} />
             <div className="w-full">
                 <div className="w-11/12 lg:w-8/12 m-auto py-12">
                     <div className="bg-[#223cd1] text-white w-fit rounded capitalize px-2.5 py-1.5 mb-4 text-xs">
-                        asia pacific business consulting and immigration services co., ltd.
+                        {translate(language, JSON.parse(tag.value), listLangs)}
                     </div>
                     <div className="grid grid-cols-1 gap-4 py-8 md:grid-cols-2">
                         <div className="col-span-1">
-                            <p className="text-[#ae73db] text-3xl font-semibold mb-4 capitalize">Business network</p>
+                            <p className="text-[#ae73db] text-3xl font-semibold mb-4 capitalize">{translate(language, JSON.parse(title.value), listLangs)}</p>
                         </div>
                         <div className="col-span-1">
                             <div className="text-xs text-left">
-                                We have established an extensive business network in Asia and maintain close cooperation with local government agencies, chambers of commerce, law firms and other business service organizations. Our partnerships help us provide our clients with comprehensive business and immigration services and ensure we have access to the latest market information and legal andregulatory developments.
+                                {translate(language, JSON.parse(descr.value), listLangs)}
                             </div>
                         </div>
                     </div>

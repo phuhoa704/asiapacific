@@ -22,6 +22,7 @@ const MegaMenu: React.FC<Props> = ({ show, mouseLeave }) => {
             <div className="col-span-1">
                 {services.filter(s => s.parent_id === 0).map(s => (
                     <p
+                        key={s.id}
                         onClick={() => navigate(`${ROUTES.SERVICES}/${s.slug}`)}
                         className="font-semibold text-[#2328ba] hover:text-[#cf2757] py-2 cursor-pointer border-b border-b-[#d9d9d9] hover:bg-[#d9d9d9] pl-1" onMouseEnter={() => setHoverId(s.id)}>
                         {translateName(language, JSON.parse(s.name), listLangs)}
@@ -32,6 +33,7 @@ const MegaMenu: React.FC<Props> = ({ show, mouseLeave }) => {
                 {services.filter(s => s.parent_id === hoverId).map(s => (
                     <div className="col-span-1">
                         <p
+                            key={s.id}
                             className="text-[#2328ba] hover:text-[#cf2757] cursor-pointer"
                             onClick={() => {
                                 const parentS = services.find(s => s.id === hoverId);

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Common, Services } from "../../../props";
+import { Common, Home, Services } from "../../../props";
 
 
 export interface ServiceState {
@@ -7,7 +7,8 @@ export interface ServiceState {
     services: Services[]
     serviceDetail: Common
     servicesById: Services
-    serviceChildDetail: Services
+    serviceChildDetail: Services,
+    setting: Home[]
 }
 
 
@@ -18,7 +19,8 @@ const initialState: ServiceState = {
         description: '',
         id: 0,
         name: '',
-        slug: ''
+        slug: '',
+        content: '',
     },
     servicesById: {
         content: '',
@@ -53,7 +55,8 @@ const initialState: ServiceState = {
         user_id: 0,
         user_update: '',
         parent_id: 0
-    }
+    },
+    setting: []
 }
 
 export const ServiceSlice = createSlice({
@@ -74,9 +77,12 @@ export const ServiceSlice = createSlice({
         },
         saveServiceChildDetail: (state, action) => {
             state.serviceChildDetail = action.payload;
+        },
+        saveSetting: (state, action) => {
+            state.setting = action.payload;
         }
     }
 })
 
-export const { saveService, saveServiceDetail, saveServices, saveServiceById, saveServiceChildDetail } = ServiceSlice.actions;
+export const { saveService, saveServiceDetail, saveServices, saveServiceById, saveServiceChildDetail, saveSetting } = ServiceSlice.actions;
 export default ServiceSlice.reducer;

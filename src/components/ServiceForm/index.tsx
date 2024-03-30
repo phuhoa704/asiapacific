@@ -69,7 +69,7 @@ const ServiceForm = () => {
                         className="block w-full h-10 px-4 py-3 text-xs border rounded-lg border-[#ddd] bg-white focus:ring-blue-500 focus:border-blue-500"
                     >
                         {service.map(s => (
-                            <option value={s.id}>{translateName(language, JSON.parse(s.name), listLangs)}</option>
+                            <option value={s.id} key={s.id}>{translateName(language, JSON.parse(s.name), listLangs)}</option>
                         ))}
                     </select>
                 </div>

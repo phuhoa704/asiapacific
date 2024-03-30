@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import httpRequest from "../../../httpRequest";
 import { APIS } from "../../../configs/apis.config";
-import { saveService, saveServiceDetail, saveServices } from "../../slices/Service";
+import { saveService, saveServiceDetail, saveServices, saveSetting } from "../../slices/Service";
 import { SubmitAppointmentDto } from "../../dto";
 import { Toast } from "../../../helpers/toast";
 
@@ -11,6 +11,7 @@ export const getServiceContent = createAsyncThunk(
         try {
             const res = await httpRequest.get(APIS.SERVICE);
             if(res.data.result) {
+                thunky.dispatch(saveSetting(res.data.setting));
                 thunky.dispatch(saveService(res.data.data));
                 return {
                     action: true

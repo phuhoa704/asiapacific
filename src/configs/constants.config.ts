@@ -88,7 +88,7 @@ export const HOME_CONSTANTS = {
     CONTACT_US_THIRD_ADDRESS: 'home_68',
     CONTACT_US_FOURTH_NAME: 'home_69',
     CONTACT_US_FOURTH_ADDRESS: 'home_70',
-    CONTACT_US_FIFTH_NAME: 'home_71',
+    BREADSCRUM: 'home_71',
     CONTACT_US_FIFTH_ADDRESS: 'home_72',
 }
 
@@ -136,6 +136,19 @@ export const NEWS_CONSTANTS = {
     BREADSCRUM: 'news_01',
     TAG: 'news_02',
     TITLE: 'news_03'
+}
+
+export const REGION_CONSTANTS = {
+    BREADSCRUM: 'region_01',
+    TAG: 'region_02',
+    TITLE: 'region_03',
+    DESCRIPTION: 'region_04'
+}
+
+export const SERVICE_CONSTANTS = {
+    BREADSCRUM: 'service_01',
+    TAG: 'service_02',
+    TITLE: 'service_03'
 }
 
 /* ////////////LANGUAGE//////////////// */

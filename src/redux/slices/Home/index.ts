@@ -6,6 +6,7 @@ export interface HomeState {
     header: Home[]
     footer: Home[]
     logo: Logo
+    menu: Home[]
 }
 
 
@@ -20,7 +21,8 @@ const initialState: HomeState = {
         key: '',
         updated_at: '',
         value: ''
-    }
+    },
+    menu: []
 }
 
 export const HomeSlice = createSlice({
@@ -38,9 +40,12 @@ export const HomeSlice = createSlice({
         },
         saveLogo: (state, action) => {
             state.logo = action.payload;
+        },
+        saveMenu: (state, action) => {
+            state.menu = action.payload;
         }
     }
 })
 
-export const { saveHome, saveHeader, saveFooter, saveLogo } = HomeSlice.actions;
+export const { saveHome, saveHeader, saveFooter, saveLogo, saveMenu } = HomeSlice.actions;
 export default HomeSlice.reducer;

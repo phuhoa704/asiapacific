@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import httpRequest from "../../../httpRequest";
 import { APIS } from "../../../configs/apis.config";
-import { saveFooter, saveHeader, saveHome, saveLogo } from "../../slices/Home";
+import { saveFooter, saveHeader, saveHome, saveLogo, saveMenu } from "../../slices/Home";
 
 export const getHomeContent = createAsyncThunk(
     'home/getHomeContent',
@@ -88,6 +88,28 @@ export const getLogoContent = createAsyncThunk(
             }
         }catch(err){
             console.log(err)
+        }
+    }
+)
+
+export const getMenu = createAsyncThunk(
+    'home/getMenu',
+    async(data: string[], thunky) => {
+        try {
+            const res = await httpRequest.post(APIS.GET_CONTENT, {key: data});
+            if(res.data.result) {
+                thunky.dispatch(saveMenu(res.data.data));
+                return {
+                    action: true
+                }
+            } else {
+                thunky.dispatch(saveMenu([]));
+                return {
+                    action: false
+                }
+            }
+        }catch(err){
+            console.log(err);
         }
     }
 )
