@@ -368,7 +368,7 @@ const Header = () => {
                         <NavLink to={ROUTES.ABOUT} className={(pathname === ROUTES.ABOUT) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm capitalize' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm capitalize'}>
                             {translate(language, JSON.parse(about.value), listLangs)}
                         </NavLink>
-                        <NavLink to={ROUTES.SERVICES} className={(pathname === ROUTES.SERVICES) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm capitalize' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm capitalize'}>
+                        <NavLink to={ROUTES.SERVICES} className={(pathname === ROUTES.SERVICES) ? 'text-[#cf2757] mr-3 font-medium lg:text-xs xl:text-sm capitalize' : 'text-[#2328ba] mr-3 font-medium lg:text-xs xl:text-sm capitalize'} onMouseEnter={() => setShowMenu(true)}>
                             {translate(language, JSON.parse(service.value), listLangs)}
                             <i className="fa-solid fa-chevron-down text-xs ml-1"></i>
                         </NavLink>
