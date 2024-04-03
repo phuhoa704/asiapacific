@@ -5,7 +5,6 @@ import { Home } from "../../props";
 import { HOME_CONSTANTS } from "../../configs/constants.config";
 import { translate, translateDescr, translateName } from "../../helpers/translator";
 import { ASSETS_API } from "../../configs/apis.config";
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
@@ -92,6 +91,7 @@ const Mission = () => {
         navigation: true,
         slidesPerView: 3,
         loop: true,
+        autoPlay: true,
         breakpoints: {
             1200: {
                 slidesPerView: 3,
@@ -116,31 +116,31 @@ const Mission = () => {
                         {translate(language, JSON.parse(description.value), listLangs)}
                     </p>
                 </div>
-                <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
-                    {mission.map(m => (
-                        <SwiperSlide key={m.id}>
-                            <div className={`group shadow-2xl rounded h-[300px] bg-cover bg-center transition-all w-8/12 m-auto`} onMouseEnter={() => setHover(m.id)} onMouseLeave={() => setHover(0)} ref={(el: any) => el && divs.current.push(el)}
-                                style={{ backgroundImage: `url(${ASSETS_API}${m.image})` }}
-                                onClick={() => {
-                                    navigate(`mission/${m.slug}`)
-                                    dispatch(saveMissionDetail(m))
-                                }}
-                            >
-                                {(hover === m.id) && (<div className="w-full h-full p-6 flex flex-col justify-between rounded" style={{ backgroundColor: 'rgba(0,0,0,.4)' }}>
-                                    <div className='rounded-full bg-white w-[50px] h-[50px] p-4 flex items-center justify-center text-[#223cd1] text-lg opacity-0 group-hover:opacity-100'>
-                                        <i className="fa-solid fa-chart-column"></i>
-                                    </div>
-                                    <div>
-                                        <div className='text-xl text-white font-semibold mb-2'>{translateName(language, JSON.parse(m.name), listLangs)}</div>
-                                        <div className="tax-service-desc text-xs text-white mb-2">{translateDescr(language, JSON.parse(m.description), listLangs)}</div>
-                                        <button className='bg-white text-[#cf2757] rounded p-2.5 w-32'>View Details</button>
-                                    </div>
-                                </div>)}
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
             </div>
+            <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
+                {mission.map(m => (
+                    <SwiperSlide key={m.id}>
+                        <div className={`shadow-2xl rounded h-[300px] bg-cover bg-center w-8/12 m-auto`} onMouseEnter={() => setHover(m.id)} onMouseLeave={() => setHover(0)} ref={(el: any) => el && divs.current.push(el)}
+                            style={{ backgroundImage: `url(${ASSETS_API}${m.image})` }}
+                            onClick={() => {
+                                navigate(`mission/${m.slug}`)
+                                dispatch(saveMissionDetail(m))
+                            }}
+                        >
+                            {(hover === m.id) && (<div className="w-full h-full p-6 flex flex-col justify-between rounded" style={{ backgroundColor: 'rgba(0,0,0,.4)' }}>
+                                <div className='rounded-full bg-white w-[50px] h-[50px] p-4 flex items-center justify-center text-[#223cd1] text-lg'>
+                                    <i className="fa-solid fa-chart-column"></i>
+                                </div>
+                                <div>
+                                    <div className='text-xl text-white font-semibold mb-2'>{translateName(language, JSON.parse(m.name), listLangs)}</div>
+                                    <div className="tax-service-desc text-xs text-white mb-2">{translateDescr(language, JSON.parse(m.description), listLangs)}</div>
+                                    <button className='bg-white text-[#cf2757] rounded p-2.5 w-32'>View Details</button>
+                                </div>
+                            </div>)}
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </section>
     );
 }
