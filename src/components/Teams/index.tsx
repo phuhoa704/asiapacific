@@ -113,13 +113,15 @@ const Teams = () => {
                     </p>
                 </div>
             </div>
-            <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
-                {team.map(t => (
-                    <SwiperSlide key={t.id}>
-                        <div className="col-span-1 bg-[#23b830] w-9/12 m-auto bg-cover h-[250px] bg-center border border-[#ae73db] border-4 rounded-xl" style={{ backgroundImage: `url(${ASSETS_API}${t.image})` }} ref={(el: any) => el && divs.current.push(el)}></div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+            {(team.length > 0) && (
+                <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
+                    {team.map(t => (
+                        <SwiperSlide key={t.id}>
+                            <div className="col-span-1 bg-[#23b830] w-9/12 m-auto bg-cover h-[250px] bg-center border border-[#ae73db] border-4 rounded-xl" style={{ backgroundImage: `url(${ASSETS_API}${t.image})` }} ref={(el: any) => el && divs.current.push(el)}></div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            )}
             <RequestBanner />
         </section>
     );

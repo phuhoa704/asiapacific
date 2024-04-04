@@ -41,7 +41,7 @@ const ServiceDetail = () => {
         loop: true,
         breakpoints: {
             1200: {
-                slidesPerView: 4,
+                slidesPerView: 3,
             },
             768: {
                 slidesPerView: 2,
@@ -66,7 +66,7 @@ const ServiceDetail = () => {
                     <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
                         {services.filter(s => s.parent_id === servicesById.id).map(s => (
                             <SwiperSlide key={s.id}>
-                                <div className="group text-[#223cd1] w-11/12 m-auto" ref={(el: any) => el && divs.current.push(el)}>
+                                <div className="group text-[#223cd1] w-8/12 m-auto" ref={(el: any) => el && divs.current.push(el)}>
                                     <div className="service-icon text-2xl w-10 h-10 group-hover:text-[#cf2757]">
                                         <i className="fa-solid fa-list-check"></i>
                                     </div>
@@ -74,7 +74,7 @@ const ServiceDetail = () => {
                                         dispatch(saveServiceChildDetail(s));
                                         navigate(`${ROUTES.SERVICES}/${servicesById.slug}/${s.slug}`)
                                     }}>{translateName(language, JSON.parse(s.name), listLangs)}</div>
-                                    <p className="tax-service-desc text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translateDescr(language, JSON.parse(s.description), listLangs)}</p>
+                                    <p className="tax-service-desc text-[10px] text-[#1d1e1f] opacity-100 transition-all group-hover:opacity-100 cursor-default lg:opacity-0">{translateDescr(language, JSON.parse(s.description), listLangs)}</p>
                                 </div>
                             </SwiperSlide>
                         ))}

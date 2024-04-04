@@ -88,19 +88,21 @@ const OurServices = () => {
                     <div className="text-[#ae73db] font-medium text-3xl capitalize" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(tag.value), listLangs)}</div>
                     <p className="text-[11px] text-[#1d1e1f] mt-4 mb-4 text-center" ref={(el: any) => el && divs.current.push(el)}>{translate(language, JSON.parse(desc.value), listLangs)}</p>
                 </div>
-                <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
-                    {services.filter(s => s.parent_id === 0).map(s => (
-                        <SwiperSlide key={s.id}>
-                            <div className="group text-[#223cd1] w-11/12 m-auto" ref={(el: any) => el && divs.current.push(el)}>
-                                <div className="service-icon text-2xl w-10 h-10 group-hover:text-[#cf2757]">
-                                    <i className="fa-solid fa-list-check"></i>
+                {(services.length > 0) && (
+                    <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
+                        {services.filter(s => s.parent_id === 0).map(s => (
+                            <SwiperSlide key={s.id}>
+                                <div className="group text-[#223cd1] w-11/12 m-auto" ref={(el: any) => el && divs.current.push(el)}>
+                                    <div className="service-icon text-2xl w-10 h-10 group-hover:text-[#cf2757]">
+                                        <i className="fa-solid fa-list-check"></i>
+                                    </div>
+                                    <div className="text-sm font-medium group-hover:text-[#cf2757] cursor-default">{translateName(language, JSON.parse(s.name), listLangs)}</div>
+                                    <p className="tax-service-desc text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translateDescr(language, JSON.parse(s.description), listLangs)}</p>
                                 </div>
-                                <div className="text-sm font-medium group-hover:text-[#cf2757] cursor-default">{translateName(language, JSON.parse(s.name), listLangs)}</div>
-                                <p className="tax-service-desc text-[10px] text-[#1d1e1f] opacity-0 transition-all group-hover:opacity-100 cursor-default">{translateDescr(language, JSON.parse(s.description), listLangs)}</p>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                )}
             </div>
         </section>
     );
