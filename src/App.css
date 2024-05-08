@@ -183,6 +183,13 @@ select:-moz-placeholder {
     animation: airplaneAnimation 2s infinite;
 }
 
+.menu-label {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
 .service-label {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -234,6 +241,14 @@ select:-moz-placeholder {
 
 .fadeDown {
     animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+}
+
+.serviceSwiper .swiper-button-prev {
+    left: 0px !important;
+}
+
+.serviceSwiper .swiper-button-next {
+    right: 0px !important;
 }
 
 @keyframes flagAnimation {

@@ -324,8 +324,8 @@ const Header = () => {
         }
     };
     return (
-        <div className="header w-10/12 m-auto max-sm:w-full lg:w-11/12 xl:w-10/12 relative">
-            <div className="top-header flex justify-between bg-[#223cd1] text-sm px-6 py-2 rounded-b-[30px] w-10/12 m-auto max-sm:w-full max-sm:text-xs sm:w-11/12 sm:text-xs lg:w-10/12">
+        <div className="header w-11/12 m-auto max-sm:w-full lg:w-11/12 xl:w-10/12 relative">
+            <div className="top-header flex justify-between bg-[#223cd1] text-sm px-6 py-2 rounded-b-[30px] w-11/12 m-auto max-sm:w-full max-sm:text-xs sm:w-11/12 sm:text-xs lg:w-11/12 gap-2.5">
                 <div className="flex max-sm:flex-col max-sm:items-start sm:flex-col sm:items-start lg:flex-row">
                     <div className="flex items-center">
                         <i className="fa-solid fa-envelope text-[#f1c853]"></i>

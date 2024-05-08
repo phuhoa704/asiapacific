@@ -117,7 +117,7 @@ const Services = () => {
                         </div>
                         <div className="text-[#ae73db] font-medium text-3xl text-center mb-4">{translate(language, JSON.parse(title.value), listLangs)}</div>
                     </div>
-                    <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="mySwiper">
+                    <Swiper {...swiperParams} navigation={true} modules={[Navigation, Autoplay]} className="serviceSwiper">
                         {services.filter(s => s.parent_id === 0).map(s => (
                             <SwiperSlide key={s.id}>
                                 <div className="w-10/12 m-auto">

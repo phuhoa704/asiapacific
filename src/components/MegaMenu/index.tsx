@@ -31,10 +31,10 @@ const MegaMenu: React.FC<Props> = ({ show, mouseLeave }) => {
             </div>
             <div className="col-span-3 grid grid-cols-2 gap-4 pl-2">
                 {services.filter(s => s.parent_id === hoverId).map(s => (
-                    <div className="col-span-1">
+                    <div className="col-span-1 border-b border-[#d9d9d9]">
                         <p
                             key={s.id}
-                            className="text-[#2328ba] hover:text-[#cf2757] cursor-pointer"
+                            className="text-[#2328ba] hover:text-[#cf2757] cursor-pointer menu-label"
                             onClick={() => {
                                 const parentS = services.find(s => s.id === hoverId);
                                 if(parentS) {
