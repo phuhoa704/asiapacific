@@ -1,5 +1,5 @@
-export const API_URL = 'https://api.asiapacific.dpcdev.click/api/';
-export const ASSETS_API = 'https://api.asiapacific.dpcdev.click';
+export const API_URL = 'https://api.apbconsultants.com/api/';
+export const ASSETS_API = 'https://api.apbconsultants.com';
 
 export const APIS = {
     HOME: 'get-content/home',
